@@ -36,7 +36,7 @@ const AboutSection = () => {
         <h2 className="section-title">
           <span className="gold-underline">Wer ich bin</span>
         </h2>
-        <p className="section-subtitle">Kurzprofil und aktueller Schwerpunkt.</p>
+        <p className="section-subtitle">Kurzprofil</p>
 
         <div className="grid md:grid-cols-3 gap-8">
           <div className="md:col-span-2 space-y-6">
