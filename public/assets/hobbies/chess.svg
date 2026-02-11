@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Schach">
+  <rect width="128" height="128" rx="24" fill="#0f172a" />
+  <rect x="10" y="10" width="108" height="108" rx="20" fill="#1f2937" />
+  <path d="M52 30 L80 44 L70 54 L86 74 L60 94 L42 72 L50 60 L36 50 Z" fill="#f8fafc" />
+  <rect x="34" y="96" width="60" height="10" rx="5" fill="#94a3b8" />
+  <rect x="28" y="106" width="72" height="8" rx="4" fill="#64748b" />
+</svg>

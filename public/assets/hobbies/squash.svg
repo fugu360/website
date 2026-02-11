@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Squash">
+  <rect width="128" height="128" rx="24" fill="#0f172a" />
+  <rect x="10" y="10" width="108" height="108" rx="20" fill="#1f2937" />
+  <ellipse cx="78" cy="42" rx="22" ry="28" fill="#94a3b8" />
+  <ellipse cx="78" cy="42" rx="14" ry="18" fill="#0f172a" opacity="0.55" />
+  <rect x="48" y="64" width="10" height="44" rx="5" fill="#f59e0b" />
+  <circle cx="58" cy="96" r="8" fill="#f59e0b" />
+  <circle cx="46" cy="54" r="6" fill="#38bdf8" />
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Ausdauersport">
+  <rect width="128" height="128" rx="24" fill="#0f172a" />
+  <rect x="10" y="10" width="108" height="108" rx="20" fill="#1f2937" />
+  <path d="M28 84 C44 72, 60 68, 96 56" stroke="#38bdf8" stroke-width="6" fill="none" stroke-linecap="round" />
+  <circle cx="40" cy="88" r="10" fill="#f8fafc" />
+  <circle cx="40" cy="88" r="5" fill="#0f172a" opacity="0.6" />
+  <path d="M54 92 L86 92 C96 92 102 86 102 78" stroke="#f59e0b" stroke-width="10" fill="none" stroke-linecap="round" />
+  <rect x="70" y="68" width="26" height="10" rx="5" fill="#94a3b8" />
+</svg>
