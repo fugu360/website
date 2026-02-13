@@ -4,6 +4,7 @@ export type Project = {
   overview: string;
   summary: string;
   pdfUrl?: string;
+  presentationUrl?: string;
   grade?: string;
   cardTech?: string[];
   skills?: string[];
@@ -69,6 +70,7 @@ export const projects: Project[] = [
     title: "Automated Guided Vehicle Scheduling Problem Decision Support System",
     overview: "DSS zur optimalen AGV-Einsatzplanung mit Energie-, Batterie- und Zeitrestriktionen.",
     summary: "In diesem Projekt habe ich ein Decision Support System (DSS) zur Lösung des Automated Guided Vehicle Scheduling Problems (AGVSP) konzipiert und umgesetzt. Ziel war es, ein reales logistisches Planungsproblem formal zu strukturieren und datenbasiert lösbar zu machen. Ich habe das Problem zunächst analytisch modelliert, indem ich: Transferaufträge mit Bearbeitungszeiten und Energieverbrauch formal beschrieben habe, Fahrzeuge mit begrenzter Batteriekapazität und Ladezeiten berücksichtigt habe, klare Restriktionen definiert habe (jeder Auftrag genau einmal, ausreichende Energiereserve, Batterielimits). Darauf aufbauend habe ich ein System entwickelt, das: Zeitpläne mit minimaler Gesamtdurchlaufzeit berechnet, verschiedene Fahrzeug- und Szenarienkonfigurationen vergleichbar macht, die Auswirkungen von Parameteränderungen (z. B. Anzahl AGVs, Energieverbrauch) transparent darstellt. Ein zentraler Bestandteil meiner Arbeit war die Szenarioanalyse. Ich habe mehrere Einsatzszenarien definiert und systematisch ausgewertet, um zu zeigen, wie sich operative Entscheidungen auf Effizienz und Systemauslastung auswirken. Die Ergebnisse habe ich visuell aufbereitet, sodass Planungsentscheidungen schnell nachvollziehbar werden. Das Projekt zeigt meine Fähigkeit, komplexe operative Probleme zu abstrahieren, in strukturierte Entscheidungsmodelle zu überführen und diese in ein praxisnahes Entscheidungsunterstützungssystem umzusetzen.",
+    presentationUrl: "/assets/projects/Präsentation Topic 2.pdf",
     grade: "6",
     result: "Transparente Planungsszenarien und bessere Entscheidungsgrundlagen für den AGV-Einsatz.",
     cardTech: ["Excel"],

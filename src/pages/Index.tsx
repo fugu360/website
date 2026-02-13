@@ -22,10 +22,36 @@ const Index = () => {
 
     const targetId = location.hash.replace("#", "");
     const target = document.getElementById(targetId);
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (!target) {
+      return;
     }
-  }, [location.hash]);
+
+    const preferAuto = Boolean((location.state as { noSmooth?: boolean } | null)?.noSmooth);
+    if (!preferAuto) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+
+    const html = document.documentElement;
+    const body = document.body;
+    const previousHtmlBehavior = html.style.scrollBehavior;
+    const previousBodyBehavior = body.style.scrollBehavior;
+
+    html.style.scrollBehavior = "auto";
+    body.style.scrollBehavior = "auto";
+    target.scrollIntoView({ behavior: "auto", block: "start" });
+
+    const restoreId = window.setTimeout(() => {
+      html.style.scrollBehavior = previousHtmlBehavior;
+      body.style.scrollBehavior = previousBodyBehavior;
+    }, 0);
+
+    return () => {
+      window.clearTimeout(restoreId);
+      html.style.scrollBehavior = previousHtmlBehavior;
+      body.style.scrollBehavior = previousBodyBehavior;
+    };
+  }, [location.hash, location.state]);
 
   return (
     <div id="top" className="min-h-screen bg-background">
