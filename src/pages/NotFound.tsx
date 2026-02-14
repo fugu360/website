@@ -1,11 +1,18 @@
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { setSeo } from "@/lib/seo";
 
 const NotFound = () => {
   const location = useLocation();
 
   useEffect(() => {
     console.error("404 Error: User attempted to access non-existent route:", location.pathname);
+    setSeo({
+      title: "404 - Seite nicht gefunden",
+      description: "Die angeforderte Seite wurde nicht gefunden.",
+      canonical: "https://www.benjamin-oehrli.ch/",
+      ogUrl: "https://www.benjamin-oehrli.ch/",
+    });
   }, [location.pathname]);
 
   return (

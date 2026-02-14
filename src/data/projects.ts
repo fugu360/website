@@ -16,7 +16,7 @@ export const projects: Project[] = [
     slug: "aktives-portfoliomanagement",
     title: "Aktives Portfoliomanagement",
     overview: "ESG-Portfoliooptimierung mit Python, Rebalancing und Performancevergleich.",
-    summary: "In diesem Projekt habe ich ein ESG-sensitives Portfolio-Optimierungsmodell auf Basis des Mean-Variance-Ansatzes entwickelt, implementiert und mit realen Marktdaten getestet. Meine Arbeit umfasste den kompletten Workflow von der Modellierung bis zur Performance-Evaluation: Formulierung eines gemischt-ganzzahligen quadratischen Optimierungsproblems, Integration von ESG-Constraints in eine klassische Risiko-Rendite-Optimierung, Erweiterung des Modells um Mindestinvestitionsanforderungen, um realistische Portfolios zu erzwingen, Implementierung des Modells in Python, Aufbau eines dynamischen Rebalancing-Prozesses über mehrere Perioden, Quantitative Performance-Analyse (Volatilität, Sortino Ratio) im Vergleich zum SMI. Die Ergebnisse zeigten, dass das optimierte Portfolio bei geringerem Risiko eine bessere risikoadjustierte Performance als der Benchmark erzielte – insbesondere nach Verschärfung der ESG-Restriktionen. Das Projekt verbindet theoretische Finanzmodelle mit praxisnaher Implementierung.",
+    summary: "In diesem Projekt habe ich ein ESG-sensitives Portfolio-Optimierungsmodell basierend auf dem Mean-Variance-Ansatz entwickelt, umgesetzt und mit echten Marktdaten getestet. Mein Arbeitsbereich reichte von der Modellierung bis zur Leistungsbewertung: Ich formulierte ein gemischt-ganzzahliges quadratisches Optimierungsproblem, integrierte ESG-Constraints in eine klassische Risiko-Rendite-Optimierung, erweiterte das Modell um Mindestinvestitionsanforderungen, um realistische Portfolios zu gewährleisten, programmierte das Modell in Python, entwickelte einen dynamischen Rebalancing-Prozess über mehrere Perioden und führte eine quantitative Performance-Analyse (Volatilität, Sortino Ratio) im Vergleich zum SMI durch. Die Ergebnisse zeigten, dass das optimierte Portfolio bei geringerem Risiko eine bessere risikoadjustierte Rendite als die Benchmark erzielte, insbesondere unter strikteren ESG-Restriktionen. Das Projekt verbindet theoretische Finanzmodelle mit praktischer Umsetzung.",
     pdfUrl: "/assets/projects/Aktives Portfoliomanagement.pdf",
     grade: "5.5",
     result: "Optimiertes Portfolio mit geringerer Volatilität und besserer Sortino Ratio als der SMI.",
@@ -73,7 +73,7 @@ export const projects: Project[] = [
     presentationUrl: "/assets/projects/Präsentation Topic 2.pdf",
     grade: "6",
     result: "Transparente Planungsszenarien und bessere Entscheidungsgrundlagen für den AGV-Einsatz.",
-    cardTech: ["Excel"],
+    cardTech: ["Excel", "VBA"],
     skills: [
       "Entscheidungsunterstützungssysteme (Decision Support Systems)",
       "Optimierungs- & Scheduling-Probleme",

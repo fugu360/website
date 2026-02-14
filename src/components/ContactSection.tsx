@@ -49,7 +49,7 @@ const ContactSection = () => {
           </p>
 
           <div className="flex flex-col items-center justify-center gap-2 mb-6">
-            <TooltipProvider>
+            <TooltipProvider delayDuration={100}>
               <Tooltip>
                 <TooltipTrigger asChild>
                   <button

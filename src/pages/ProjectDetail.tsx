@@ -1,14 +1,41 @@
 import { Link, useParams } from "react-router-dom";
 import { BlockMath, InlineMath } from "react-katex";
+import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { projects } from "@/data/projects";
+import { baseKeywords, setSeo } from "@/lib/seo";
 
 const ProjectDetail = () => {
   const { slug } = useParams();
   const project = projects.find((item) => item.slug === slug);
   const showPortfolioModel = project?.slug === "aktives-portfoliomanagement";
   const showTrumpImage = project?.slug === "auswirkung-der-trump-wahl";
+  const canonicalUrl = slug
+    ? `https://www.benjamin-oehrli.ch/projects/${slug}`
+    : "https://www.benjamin-oehrli.ch/";
+
+  useEffect(() => {
+    if (!project) {
+      setSeo({
+        title: "Projekt nicht gefunden - Benjamin Oehrli",
+        description: "Das angeforderte Projekt wurde nicht gefunden.",
+        canonical: canonicalUrl,
+        ogUrl: canonicalUrl,
+      });
+      return;
+    }
+
+    setSeo({
+      title: `${project.title} - Benjamin Oehrli`,
+      description: project.overview,
+      keywords: `${project.title}, ${baseKeywords}`,
+      canonical: canonicalUrl,
+      ogTitle: project.title,
+      ogDescription: project.overview,
+      ogUrl: canonicalUrl,
+    });
+  }, [canonicalUrl, project]);
   const portfolioModelLatex = String.raw`\begin{aligned}
 \min \quad & \sum_{i \in I} \sum_{i' \in I} w_i \, w_{i'} \, \sigma_{ii'} \\
 u.d.N. \quad

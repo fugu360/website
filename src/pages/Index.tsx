@@ -11,9 +11,21 @@ import SkillsSection from "@/components/SkillsSection";
 import ItSkillsSection from "@/components/ItSkillsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import { baseKeywords, setSeo } from "@/lib/seo";
 
 const Index = () => {
   const location = useLocation();
+
+  useEffect(() => {
+    setSeo({
+      title: "Benjamin Oehrli - Portfolio",
+      description:
+        "Portfolio von Benjamin Oehrli, Masterstudent Financial Management. Projekte in Finance, Operations Research, ESG und Python.",
+      keywords: baseKeywords,
+      canonical: "https://www.benjamin-oehrli.ch/",
+      ogUrl: "https://www.benjamin-oehrli.ch/",
+    });
+  }, []);
 
   useEffect(() => {
     if (!location.hash) {
