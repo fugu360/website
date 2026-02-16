@@ -83,7 +83,7 @@ const ProjectDetail = () => {
     lang === "en"
       ? String.raw`\begin{aligned}
 \min \quad & \sum_{i \in I} \sum_{i' \in I} w_i \, w_{i'} \, \sigma_{ii'} \\
-	ext{s.t.} \quad
+s.t. \quad
 & \sum_{i \in I} w_i = 1 \\
 & \sum_{i \in I} w_i \, \bar{r}_i = \mu \\
 & \sum_{i \in I} w_i \, ESG_i \leq ESG_{max} \\
