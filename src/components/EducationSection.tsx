@@ -5,7 +5,7 @@ const education = [
   {
     degree: "Master of Science in Financial Management",
     institution: "Universität Bern",
-    period: "Seit 2024",
+    period: "2024 – 2026",
     details: "Schwerpunkt Financial Management.",
   },
   {
