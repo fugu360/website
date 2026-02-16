@@ -6,6 +6,7 @@ type SeoOptions = {
   ogTitle?: string;
   ogDescription?: string;
   ogUrl?: string;
+  lang?: "de" | "en";
 };
 
 const ensureMeta = (attr: "name" | "property", key: string, value: string) => {
@@ -41,7 +42,11 @@ export const setSeo = ({
   ogTitle,
   ogDescription,
   ogUrl,
+  lang,
 }: SeoOptions) => {
+  if (lang) {
+    document.documentElement.lang = lang;
+  }
   document.title = title;
 
   if (description) {

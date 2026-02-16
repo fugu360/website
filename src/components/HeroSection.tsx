@@ -1,7 +1,25 @@
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
+import { useLanguage } from "@/lib/i18n";
 
 const HeroSection = () => {
+  const { lang } = useLanguage();
+  const copy = {
+    de: {
+      label: "Portfolio",
+      subtitle: "Masterstudent Financial Management · Universität Bern",
+      contact: "Kontakt",
+      about: "Über mich",
+    },
+    en: {
+      label: "Portfolio",
+      subtitle: "MSc Financial Management student · University of Bern",
+      contact: "Contact",
+      about: "About",
+    },
+  };
+  const text = copy[lang];
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-primary">
       {/* Subtle pattern overlay */}
@@ -17,7 +35,7 @@ const HeroSection = () => {
           transition={{ duration: 0.6 }}
           className="text-accent font-medium tracking-widest uppercase text-sm mb-6"
         >
-          Portfolio
+          {text.label}
         </motion.p>
 
         <motion.h1
@@ -35,7 +53,7 @@ const HeroSection = () => {
           transition={{ duration: 0.7, delay: 0.3 }}
           className="text-primary-foreground/70 text-lg md:text-xl max-w-2xl mx-auto mb-10"
         >
-          Masterstudent Financial Management · Universität Bern
+          {text.subtitle}
         </motion.p>
 
         <motion.div
@@ -48,13 +66,13 @@ const HeroSection = () => {
             href="#contact"
             className="inline-flex items-center px-6 py-3 rounded-lg bg-accent text-accent-foreground font-semibold text-sm hover:brightness-110 transition-all"
           >
-            Kontakt
+            {text.contact}
           </a>
           <a
             href="#about"
             className="inline-flex items-center px-6 py-3 rounded-lg border border-primary-foreground/20 text-primary-foreground font-semibold text-sm hover:bg-primary-foreground/10 transition-all"
           >
-            Über mich
+            {text.about}
           </a>
         </motion.div>
 

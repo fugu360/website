@@ -2,8 +2,26 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Linkedin, Mail, MapPin, Send } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { useLanguage } from "@/lib/i18n";
 
 const ContactSection = () => {
+  const { lang } = useLanguage();
+  const text =
+    lang === "en"
+      ? {
+          eyebrow: "Contact",
+          title: "Contact",
+          subtitle: "I welcome feedback and conversations.",
+          copy: "Copy",
+          copied: "Copied!",
+        }
+      : {
+          eyebrow: "Kontakt",
+          title: "Kontakt",
+          subtitle: "Ich freue mich über Rückmeldungen und Gespräche.",
+          copy: "Kopieren",
+          copied: "Kopiert!",
+        };
   const [copied, setCopied] = useState(false);
   const copyTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -39,13 +57,15 @@ const ContactSection = () => {
         >
           <div className="flex items-center justify-center gap-3 mb-2">
             <Send size={20} className="text-accent" />
-            <p className="text-accent font-medium text-sm tracking-widest uppercase">Kontakt</p>
+            <p className="text-accent font-medium text-sm tracking-widest uppercase">
+              {text.eyebrow}
+            </p>
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
-            <span className="gold-underline">Kontakt</span>
+            <span className="gold-underline">{text.title}</span>
           </h2>
           <p className="text-primary-foreground/60 text-lg mb-10 max-w-xl mx-auto">
-            Ich freue mich über Rückmeldungen und Gespräche.
+            {text.subtitle}
           </p>
 
           <div className="flex flex-col items-center justify-center gap-2 mb-6">
@@ -62,7 +82,7 @@ const ContactSection = () => {
                   </button>
                 </TooltipTrigger>
                 <TooltipContent className="border-border/60 bg-popover/95 text-popover-foreground backdrop-blur">
-                  {copied ? "Kopiert!" : "Kopieren"}
+                  {copied ? text.copied : text.copy}
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
@@ -73,7 +93,7 @@ const ContactSection = () => {
               transition={{ duration: 0.2 }}
               className="text-xs text-accent"
             >
-              Kopiert!
+              {text.copied}
             </motion.span>
           </div>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">

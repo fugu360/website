@@ -1,14 +1,38 @@
 import { motion } from "framer-motion";
 import { Zap } from "lucide-react";
+import { useLanguage } from "@/lib/i18n";
 
-const languages = [
-  { name: "Deutsch", level: "Mündlich und schriftlich: sehr gut (Muttersprache)" },
-  { name: "Englisch", level: "Mündlich und schriftlich: sehr gut (Niveau B2, ohne Diplom)" },
-  { name: "Französisch", level: "Mündlich und schriftlich: sehr gut (Niveau B2, ohne Diplom)" },
-  { name: "Niederländisch", level: "Gutes mündliches Verständnis" },
-];
+const languagesByLang = {
+  de: [
+    { name: "Deutsch", level: "Mündlich und schriftlich: sehr gut (Muttersprache)" },
+    { name: "Englisch", level: "Mündlich und schriftlich: sehr gut (Niveau B2, ohne Diplom)" },
+    { name: "Französisch", level: "Mündlich und schriftlich: sehr gut (Niveau B2, ohne Diplom)" },
+    { name: "Niederländisch", level: "Gutes mündliches Verständnis" },
+  ],
+  en: [
+    { name: "German", level: "Native (spoken and written)" },
+    { name: "English", level: "Fluent (spoken and written, B2 level, no certificate)" },
+    { name: "French", level: "Fluent (spoken and written, B2 level, no certificate)" },
+    { name: "Dutch", level: "Good spoken comprehension" },
+  ],
+};
 
 const SkillsSection = () => {
+  const { lang } = useLanguage();
+  const text =
+    lang === "en"
+      ? {
+          eyebrow: "Languages",
+          title: "Language skills",
+          subtitle: "Languages and proficiency at a glance.",
+        }
+      : {
+          eyebrow: "Sprachen",
+          title: "Sprachkenntnisse",
+          subtitle: "Sprachen und Kompetenzniveau im Überblick.",
+        };
+  const languages = languagesByLang[lang];
+
   return (
     <section id="skills" className="bg-secondary/50">
       <div className="section-container">
@@ -20,12 +44,14 @@ const SkillsSection = () => {
         >
           <div className="flex items-center gap-3 mb-2">
             <Zap size={20} className="text-accent" />
-            <p className="text-accent font-medium text-sm tracking-widest uppercase">Sprachen</p>
+            <p className="text-accent font-medium text-sm tracking-widest uppercase">
+              {text.eyebrow}
+            </p>
           </div>
           <h2 className="section-title">
-            <span className="gold-underline">Sprachkenntnisse</span>
+            <span className="gold-underline">{text.title}</span>
           </h2>
-          <p className="section-subtitle">Sprachen und Kompetenzniveau im Überblick.</p>
+          <p className="section-subtitle">{text.subtitle}</p>
         </motion.div>
 
         <div className="grid gap-6 md:grid-cols-2">

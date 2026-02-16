@@ -1,28 +1,66 @@
 import { motion } from "framer-motion";
 import { GraduationCap } from "lucide-react";
+import { useLanguage } from "@/lib/i18n";
 
-const education = [
-  {
-    degree: "Master of Science in Financial Management",
-    institution: "Universität Bern",
-    period: "2024 – 2026",
-    details: "Schwerpunkt Financial Management.",
-  },
-  {
-    degree: "Bachelor of Science in Business Administration und Data Science",
-    institution: "Universität Bern",
-    period: "2020 – 2024",
-    details: "Studium an der Wirtschaftswissenschaftlichen Fakultät.",
-  },
-  {
-    degree: "Gymnasium mit Schwerpunkt Wirtschaft & Recht",
-    institution: "Gymnasium",
-    period: "2016 – 2020",
-    details: "Schulische Ausbildung mit Fokus auf Wirtschaft und Recht.",
-  },
-];
+const educationByLang = {
+  de: [
+    {
+      degree: "Master of Science in Financial Management",
+      institution: "Universität Bern",
+      period: "Seit 2024",
+      details: "Schwerpunkt Financial Management.",
+    },
+    {
+      degree: "Bachelor of Science in Business Administration und Data Science",
+      institution: "Universität Bern",
+      period: "2020 – 2024",
+      details: "Studium an der Wirtschaftswissenschaftlichen Fakultät.",
+    },
+    {
+      degree: "Gymnasium mit Schwerpunkt Wirtschaft & Recht",
+      institution: "Gymnasium",
+      period: "2016 – 2020",
+      details: "Schulische Ausbildung mit Fokus auf Wirtschaft und Recht.",
+    },
+  ],
+  en: [
+    {
+      degree: "Master of Science in Financial Management",
+      institution: "University of Bern",
+      period: "Since 2024",
+      details: "Focus on financial management.",
+    },
+    {
+      degree: "Bachelor of Science in Business Administration and Data Science",
+      institution: "University of Bern",
+      period: "2020 – 2024",
+      details: "Studies at the School of Business, Economics and Social Sciences.",
+    },
+    {
+      degree: "High school with a focus on Economics & Law",
+      institution: "High School",
+      period: "2016 – 2020",
+      details: "Secondary education with a focus on economics and law.",
+    },
+  ],
+};
 
 const EducationSection = () => {
+  const { lang } = useLanguage();
+  const text =
+    lang === "en"
+      ? {
+          eyebrow: "Education",
+          title: "Academic background",
+          subtitle: "Degrees and certifications.",
+        }
+      : {
+          eyebrow: "Ausbildung",
+          title: "Akademischer Hintergrund",
+          subtitle: "Meine Studienabschlüsse und Zertifizierungen.",
+        };
+  const education = educationByLang[lang];
+
   return (
     <section id="education">
       <div className="section-container">
@@ -34,12 +72,14 @@ const EducationSection = () => {
         >
           <div className="flex items-center gap-3 mb-2">
             <GraduationCap size={20} className="text-accent" />
-            <p className="text-accent font-medium text-sm tracking-widest uppercase">Ausbildung</p>
+            <p className="text-accent font-medium text-sm tracking-widest uppercase">
+              {text.eyebrow}
+            </p>
           </div>
           <h2 className="section-title">
-            <span className="gold-underline">Akademischer Hintergrund</span>
+            <span className="gold-underline">{text.title}</span>
           </h2>
-          <p className="section-subtitle">Meine Studienabschlüsse und Zertifizierungen.</p>
+          <p className="section-subtitle">{text.subtitle}</p>
         </motion.div>
 
         <div className="relative">

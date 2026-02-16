@@ -1,14 +1,38 @@
 import { motion } from "framer-motion";
 import { Laptop } from "lucide-react";
+import { useLanguage } from "@/lib/i18n";
 
-const itSkills = [
-  { name: "MS Excel", level: "Sehr gut" },
-  { name: "Python", level: "Sehr gut" },
-  { name: "R", level: "Sehr gut" },
-  { name: "SAP", level: "Gut" },
-];
+const itSkillsByLang = {
+  de: [
+    { name: "MS Excel", level: "Sehr gut" },
+    { name: "Python", level: "Sehr gut" },
+    { name: "R", level: "Sehr gut" },
+    { name: "SAP", level: "Gut" },
+  ],
+  en: [
+    { name: "MS Excel", level: "Very good" },
+    { name: "Python", level: "Very good" },
+    { name: "R", level: "Very good" },
+    { name: "SAP", level: "Good" },
+  ],
+};
 
 const ItSkillsSection = () => {
+  const { lang } = useLanguage();
+  const text =
+    lang === "en"
+      ? {
+          eyebrow: "IT Skills",
+          title: "IT Skills",
+          subtitle: "Technical tools at a glance.",
+        }
+      : {
+          eyebrow: "IT-Kenntnisse",
+          title: "IT-Kenntnisse",
+          subtitle: "Fachliche Tools im Überblick.",
+        };
+  const itSkills = itSkillsByLang[lang];
+
   return (
     <section id="it-skills">
       <div className="section-container">
@@ -20,12 +44,14 @@ const ItSkillsSection = () => {
         >
           <div className="flex items-center gap-3 mb-2">
             <Laptop size={20} className="text-accent" />
-            <p className="text-accent font-medium text-sm tracking-widest uppercase">IT-Kenntnisse</p>
+            <p className="text-accent font-medium text-sm tracking-widest uppercase">
+              {text.eyebrow}
+            </p>
           </div>
           <h2 className="section-title">
-            <span className="gold-underline">IT-Kenntnisse</span>
+            <span className="gold-underline">{text.title}</span>
           </h2>
-          <p className="section-subtitle">Fachliche Tools im Überblick.</p>
+          <p className="section-subtitle">{text.subtitle}</p>
         </motion.div>
 
         <div className="grid gap-6 md:grid-cols-2">

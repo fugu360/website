@@ -1,32 +1,74 @@
 import { motion } from "framer-motion";
 import { Briefcase } from "lucide-react";
+import { useLanguage } from "@/lib/i18n";
 
-const experiences = [
-  {
-    role: "Hilfsassistent",
-    company: "Universität Bern",
-    logoSrc: "/assets/logos/university_of_bern_logo.jpg",
-    logoAlt: "Universität Bern Logo",
-    period: "Seit August 2023",
-    tasks: [
-      "Unterstützung des internen Kontrollsystems",
-      "Erstellung und Durchführung von Finanz- und Budgetplanungen",
-    ],
-  },
-  {
-    role: "Kassierer",
-    company: "Migros Brügg",
-    logoSrc: "/assets/logos/genossenschaft_migros_aare_logo.jpg",
-    logoAlt: "Genossenschaft Migros Aare Logo",
-    period: "April – September 2021",
-    tasks: [
-      "Kundenservice und Kassenabwicklung",
-      "Sorgfalt im Umgang mit Geld und Abrechnungen",
-    ],
-  },
-];
+const experiencesByLang = {
+  de: [
+    {
+      role: "Hilfsassistent",
+      company: "Universität Bern",
+      logoSrc: "/assets/logos/university_of_bern_logo.jpg",
+      logoAlt: "Universität Bern Logo",
+      period: "Seit August 2023",
+      tasks: [
+        "Unterstützung des internen Kontrollsystems",
+        "Erstellung und Durchführung von Finanz- und Budgetplanungen",
+      ],
+    },
+    {
+      role: "Kassierer",
+      company: "Migros Brügg",
+      logoSrc: "/assets/logos/genossenschaft_migros_aare_logo.jpg",
+      logoAlt: "Genossenschaft Migros Aare Logo",
+      period: "April – September 2021",
+      tasks: [
+        "Kundenservice und Kassenabwicklung",
+        "Sorgfalt im Umgang mit Geld und Abrechnungen",
+      ],
+    },
+  ],
+  en: [
+    {
+      role: "Teaching Assistant",
+      company: "University of Bern",
+      logoSrc: "/assets/logos/university_of_bern_logo.jpg",
+      logoAlt: "University of Bern logo",
+      period: "Since Aug 2023",
+      tasks: [
+        "Support for the internal control system",
+        "Preparation and execution of financial and budget planning",
+      ],
+    },
+    {
+      role: "Cashier",
+      company: "Migros Brügg",
+      logoSrc: "/assets/logos/genossenschaft_migros_aare_logo.jpg",
+      logoAlt: "Genossenschaft Migros Aare logo",
+      period: "Apr – Sep 2021",
+      tasks: [
+        "Customer service and checkout operations",
+        "Careful handling of cash and reconciliations",
+      ],
+    },
+  ],
+};
 
 const ExperienceSection = () => {
+  const { lang } = useLanguage();
+  const text =
+    lang === "en"
+      ? {
+          eyebrow: "Experience",
+          title: "Career journey",
+          subtitle: "Highlights of my professional path.",
+        }
+      : {
+          eyebrow: "Berufserfahrung",
+          title: "Mein Werdegang",
+          subtitle: "Stationen meiner beruflichen Laufbahn.",
+        };
+  const experiences = experiencesByLang[lang];
+
   return (
     <section id="experience" className="bg-secondary/50">
       <div className="section-container">
@@ -38,12 +80,14 @@ const ExperienceSection = () => {
         >
           <div className="flex items-center gap-3 mb-2">
             <Briefcase size={20} className="text-accent" />
-            <p className="text-accent font-medium text-sm tracking-widest uppercase">Berufserfahrung</p>
+            <p className="text-accent font-medium text-sm tracking-widest uppercase">
+              {text.eyebrow}
+            </p>
           </div>
           <h2 className="section-title">
-            <span className="gold-underline">Mein Werdegang</span>
+            <span className="gold-underline">{text.title}</span>
           </h2>
-          <p className="section-subtitle">Stationen meiner beruflichen Laufbahn.</p>
+          <p className="section-subtitle">{text.subtitle}</p>
         </motion.div>
 
         <div className="relative">

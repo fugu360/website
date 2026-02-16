@@ -2,23 +2,44 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
+import { useLanguage } from "@/lib/i18n";
 
-const navItems = [
-  { label: "Über mich", href: "#about" },
-  { label: "Berufserfahrung", href: "#experience" },
-  { label: "Ausbildung", href: "#education" },
-  { label: "Projekte", href: "#projects" },
-  { label: "IT-Kenntnisse", href: "#it-skills" },
-  { label: "Sprachen", href: "#skills" },
-  { label: "Kontakt", href: "#contact" },
-];
+const navItems = {
+  de: [
+    { label: "Über mich", href: "#about" },
+    { label: "Berufserfahrung", href: "#experience" },
+    { label: "Ausbildung", href: "#education" },
+    { label: "Projekte", href: "#projects" },
+    { label: "IT-Kenntnisse", href: "#it-skills" },
+    { label: "Sprachen", href: "#skills" },
+    { label: "Kontakt", href: "#contact" },
+  ],
+  en: [
+    { label: "About", href: "#about" },
+    { label: "Experience", href: "#experience" },
+    { label: "Education", href: "#education" },
+    { label: "Projects", href: "#projects" },
+    { label: "IT Skills", href: "#it-skills" },
+    { label: "Languages", href: "#skills" },
+    { label: "Contact", href: "#contact" },
+  ],
+};
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
-  const isHome = location.pathname === "/";
-  const getNavHref = (href: string) => (isHome ? href : `/${href}`);
+  const { lang, isEnglish } = useLanguage();
+  const isHome = location.pathname === "/" || location.pathname === "/en";
+  const homePath = isEnglish ? "/en" : "/";
+  const getNavHref = (href: string) => (isHome ? href : `${homePath}${href}`);
+  const navLinks = navItems[lang];
+  const switchLabel = isEnglish ? "DE" : "EN";
+  const pathWithoutLang = isEnglish ? location.pathname.replace(/^\/en/, "") : location.pathname;
+  const dePath = pathWithoutLang === "" ? "/" : pathWithoutLang;
+  const enPath = isEnglish ? location.pathname : `/en${location.pathname === "/" ? "" : location.pathname}`;
+  const switchPath = isEnglish ? dePath : enPath;
+  const switchTo = `${switchPath}${location.hash}`;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -41,7 +62,7 @@ const Navbar = () => {
 
         {/* Desktop */}
         <ul className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
+          {navLinks.map((item) => (
             <li key={item.href}>
               <a
                 href={getNavHref(item.href)}
@@ -51,13 +72,22 @@ const Navbar = () => {
               </a>
             </li>
           ))}
+          <li className="ml-6">
+            <Link
+              to={switchTo}
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              aria-label={isEnglish ? "Switch to German" : "Switch to English"}
+            >
+              {switchLabel}
+            </Link>
+          </li>
         </ul>
 
         {/* Mobile toggle */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
           className="md:hidden p-2 text-foreground"
-          aria-label="Menü"
+          aria-label={lang === "en" ? "Menu" : "Menü"}
         >
           {mobileOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
@@ -73,7 +103,7 @@ const Navbar = () => {
             className="md:hidden bg-background border-b border-border overflow-hidden"
           >
             <ul className="flex flex-col px-6 py-4 gap-4">
-              {navItems.map((item) => (
+              {navLinks.map((item) => (
                 <li key={item.href}>
                   <a
                     href={getNavHref(item.href)}
@@ -84,6 +114,16 @@ const Navbar = () => {
                   </a>
                 </li>
               ))}
+              <li className="ml-auto">
+                <Link
+                  to={switchTo}
+                  onClick={() => setMobileOpen(false)}
+                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                  aria-label={isEnglish ? "Switch to German" : "Switch to English"}
+                >
+                  {switchLabel}
+                </Link>
+              </li>
             </ul>
           </motion.div>
         )}

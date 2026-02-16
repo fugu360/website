@@ -1,26 +1,54 @@
 import { motion } from "framer-motion";
 import { User } from "lucide-react";
+import { useLanguage } from "@/lib/i18n";
 
 const aboutImages = [
-  {
-    src: "/assets/about me/WhatsApp Image 2026-02-10 at 19.20.22 (1).jpeg",
-    alt: "Über mich Foto 1",
-  },
-  {
-    src: "/assets/about me/WhatsApp Image 2026-02-10 at 19.20.22.jpeg",
-    alt: "Über mich Foto 2",
-  },
-  {
-    src: "/assets/about me/WhatsApp Image 2026-02-10 at 19.21.06.jpeg",
-    alt: "Über mich Foto 3",
-  },
-  {
-    src: "/assets/about me/WhatsApp Image 2026-02-10 at 19.22.02.jpeg",
-    alt: "Über mich Foto 4",
-  },
+  "/assets/about me/WhatsApp Image 2026-02-10 at 19.20.22 (1).jpeg",
+  "/assets/about me/WhatsApp Image 2026-02-10 at 19.20.22.jpeg",
+  "/assets/about me/WhatsApp Image 2026-02-10 at 19.21.06.jpeg",
+  "/assets/about me/WhatsApp Image 2026-02-10 at 19.22.02.jpeg",
 ];
 
 const AboutSection = () => {
+  const { lang } = useLanguage();
+  const copy = {
+    de: {
+      eyebrow: "Über mich",
+      title: "Wer ich bin",
+      subtitle: "Kurzprofil",
+      paragraphOne:
+        "Ich schätze die kleinen Dinge: richtig gutes Essen, ein intensives Sporttraining oder eine Schachpartie, die Konzentration bis zum letzten Zug fordert.",
+      paragraphTwo:
+        "Am meisten Energie geben mir gemeinsame Erlebnisse. Spontan etwas unternehmen, zusammen essen gehen oder einfach Zeit mit Freunden verbringen. Die Kombination aus Bewegung, analytischem Denken und Gemeinschaft ist für mich der ideale Ausgleich.",
+      profileTitle: "Kurzprofil",
+      locationLabel: "Standort",
+      studyLabel: "Studium",
+      statusLabel: "Status",
+      locationValue: "Bern",
+      studyValue: "MSc Financial Management",
+      statusValue: "Offen für Angebote",
+      imageAltPrefix: "Über mich Foto",
+    },
+    en: {
+      eyebrow: "About",
+      title: "Who I am",
+      subtitle: "Profile",
+      paragraphOne:
+        "I appreciate the small things: great food, an intense workout, or a chess game that demands focus until the final move.",
+      paragraphTwo:
+        "Shared experiences give me the most energy. Spontaneous plans, grabbing a meal together, or simply spending time with friends. The mix of movement, analytical thinking, and community is my ideal balance.",
+      profileTitle: "Profile",
+      locationLabel: "Location",
+      studyLabel: "Study",
+      statusLabel: "Status",
+      locationValue: "Bern",
+      studyValue: "MSc Financial Management",
+      statusValue: "Open to opportunities",
+      imageAltPrefix: "About me photo",
+    },
+  };
+  const text = copy[lang];
+
   return (
     <section id="about" className="section-container">
       <motion.div
@@ -31,35 +59,28 @@ const AboutSection = () => {
       >
         <div className="flex items-center gap-3 mb-2">
           <User size={20} className="text-accent" />
-          <p className="text-accent font-medium text-sm tracking-widest uppercase">Über mich</p>
+          <p className="text-accent font-medium text-sm tracking-widest uppercase">{text.eyebrow}</p>
         </div>
         <h2 className="section-title">
-          <span className="gold-underline">Wer ich bin</span>
+          <span className="gold-underline">{text.title}</span>
         </h2>
-        <p className="section-subtitle">Kurzprofil</p>
+        <p className="section-subtitle">{text.subtitle}</p>
 
         <div className="grid md:grid-cols-3 gap-8">
           <div className="md:col-span-2 space-y-6">
             <div className="space-y-4 text-muted-foreground leading-relaxed">
-            <p>
-              Ich schätze die kleinen Dinge: richtig gutes Essen, ein intensives Sporttraining
-              oder eine Schachpartie, die Konzentration bis zum letzten Zug fordert.
-            </p>
-            <p>
-              Am meisten Energie geben mir gemeinsame Erlebnisse. Spontan etwas unternehmen,
-              zusammen essen gehen oder einfach Zeit mit Freunden verbringen. Die Kombination
-              aus Bewegung, analytischem Denken und Gemeinschaft ist für mich der ideale Ausgleich.
-            </p>
+              <p>{text.paragraphOne}</p>
+              <p>{text.paragraphTwo}</p>
             </div>
             <div className="grid grid-cols-2 gap-4">
               {aboutImages.map((image, index) => (
                 <div
-                  key={image.src}
+                  key={image}
                   className="overflow-hidden rounded-xl border border-border bg-card"
                 >
                   <img
-                    src={encodeURI(image.src)}
-                    alt={image.alt}
+                    src={encodeURI(image)}
+                    alt={`${text.imageAltPrefix} ${index + 1}`}
                     className={`h-full w-full object-cover aspect-[4/3] ${index === 0 ? "object-[50%_20%]" : "object-center"}`}
                     loading="lazy"
                   />
@@ -68,19 +89,19 @@ const AboutSection = () => {
             </div>
           </div>
           <div className="bg-card rounded-xl border border-border p-6 space-y-4 self-start">
-            <h3 className="font-semibold text-foreground">Kurzprofil</h3>
+            <h3 className="font-semibold text-foreground">{text.profileTitle}</h3>
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li className="flex justify-between">
-                <span>Standort</span>
-                <span className="text-foreground font-medium">Bern</span>
+                <span>{text.locationLabel}</span>
+                <span className="text-foreground font-medium">{text.locationValue}</span>
               </li>
               <li className="flex justify-between">
-                <span>Studium</span>
-                <span className="text-foreground font-medium">MSc Financial Management</span>
+                <span>{text.studyLabel}</span>
+                <span className="text-foreground font-medium">{text.studyValue}</span>
               </li>
               <li className="flex justify-between">
-                <span>Status</span>
-                <span className="text-accent font-medium">Offen für Angebote</span>
+                <span>{text.statusLabel}</span>
+                <span className="text-accent font-medium">{text.statusValue}</span>
               </li>
             </ul>
           </div>
