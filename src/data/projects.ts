@@ -74,6 +74,33 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: "derivatives-pricing",
+    title: {
+      de: "Derivatives Pricing",
+      en: "Derivatives Pricing",
+    },
+    overview: {
+      de: "Bewertung von Derivaten und strukturierten Produkten mit Black-Scholes und Monte-Carlo-Simulation.",
+      en: "Valuation of derivatives and structured products using Black-Scholes and Monte Carlo simulation.",
+    },
+    summary: {
+      de: "In diesem Projekt wurde die Bewertung verschiedener Derivate sowie eines strukturierten Produkts unter Anwendung analytischer und numerischer Methoden durchgeführt. Der methodische Fokus lag auf der Kombination des Black Scholes Modells mit Monte Carlo Simulationen unter Annahme einer risikoneutralen geometrischen Brownschen Bewegung. Zunächst wurde der Preis einer europäischen Call Option analytisch mit dem Black Scholes Modell bestimmt und anschliessend als Benchmark für die Simulationsergebnisse verwendet. Durch sukzessive Erhöhung der Anzahl Simulationen wurde die Konvergenz der Monte Carlo Schätzung überprüft und der statistische Fehler analysiert. Die gesamte Implementierung erfolgte in Python. Für die Simulation der Preispfade wurden NumPy und Zufallszahlen aus der Standardnormalverteilung verwendet, die Diskretisierung erfolgte auf täglicher Basis mit 250 Handelstagen pro Jahr. Pandas wurde für die Verarbeitung und Analyse von Zeitreihendaten eingesetzt, Matplotlib für grafische Auswertungen wie Histogramme und Sensitivitätsanalysen. Historische Marktdaten sowie Volatilitäten wurden über die Yahoo Finance Schnittstelle bezogen und in Python weiterverarbeitet. Neben europäischen Optionen wurden auch amerikanische Put Optionen, Lookback Optionen sowie Barrier Optionen mittels angepasster Payoff Funktionen simuliert. Dadurch konnte gezeigt werden, wie sich unterschiedliche Auszahlungsstrukturen methodisch in die Monte Carlo Logik integrieren lassen. Zusätzlich wurde eine empirische Analyse von Renditeverteilungen durchgeführt, inklusive Berechnung von Mittelwert, Volatilität, Schiefe, Kurtosis und Quantilen. Im Individualteil wurde eine kapitalgeschützte Partizipationsanleihe auf Alphabet bewertet. Das Produkt wurde in eine Anleihekomponente und eine call ähnliche Optionskomponente zerlegt. Die Optionskomponente wurde erneut mittels Monte Carlo Simulation bewertet und mit dem Emissionspreis verglichen. Ergänzend wurde eine Volatilitätssensitivität analysiert, welche den positiven Zusammenhang zwischen Volatilität und Optionswert bestätigte. Das Projekt verbindet finanztheoretische Modelle mit praktischer Umsetzung in Python und zeigt die Anwendung quantitativer Bewertungsmethoden auf reale Marktprodukte",
+      en: "This project covers the valuation of multiple derivatives and a structured product using analytical and numerical methods. The methodological focus is the combination of the Black-Scholes model and Monte Carlo simulations under a risk-neutral geometric Brownian motion assumption. First, a European call option is priced analytically with Black-Scholes and then used as a benchmark for simulation results. By progressively increasing the number of simulation paths, convergence of the Monte Carlo estimator and statistical error are analyzed. The full implementation is in Python. Price paths are simulated with NumPy and standard normal random draws, using daily discretization with 250 trading days per year. Pandas is used for time-series processing and analysis, and Matplotlib for graphical outputs such as histograms and sensitivity analyses. Historical market data and volatilities are retrieved via the Yahoo Finance API and processed in Python. In addition to European options, American put options, lookback options, and barrier options are simulated via adapted payoff functions, showing how different payoff structures can be integrated into the Monte Carlo framework. An empirical analysis of return distributions is also conducted, including mean, volatility, skewness, kurtosis, and quantiles. In the individual part, a capital-protected participation note on Alphabet is valued by decomposing the product into a bond component and a call-like option component. The option component is again valued with Monte Carlo simulation and compared to the issuance price. A volatility sensitivity analysis confirms the positive relationship between volatility and option value. The project combines financial theory with practical Python implementation and demonstrates quantitative valuation methods on real market products.",
+    },
+    pdfUrl: "/assets/projects/Derivatives Pricing.pdf",
+    cardTech: ["Python"],
+    skills: [
+      "Black-Scholes-Modell",
+      "Monte-Carlo-Simulation",
+      "Optionsbewertung",
+      "Strukturierte Produkte",
+      "Zeitreihenanalyse mit Pandas",
+      "Visualisierung mit Matplotlib",
+      "Yahoo Finance API",
+      "Python",
+    ],
+  },
+  {
     slug: "bachelorarbeit",
     title: {
       de: "Bachelorarbeit",
