@@ -9,12 +9,16 @@ const educationByLang = {
       institution: "Universität Bern",
       period: "2024 – 2026",
       details: "Schwerpunkt Financial Management.",
+      diplomaLabel: "Aktuelles Notenblatt",
+      diplomaUrl: "/assets/Zeugnisse/2026-03-01_12.43.43_Studienblatt.pdf",
     },
     {
       degree: "Bachelor of Science in Business Administration und Data Science",
       institution: "Universität Bern",
       period: "2020 – 2024",
       details: "Studium an der Wirtschaftswissenschaftlichen Fakultät.",
+      diplomaLabel: "Bachelordiplom",
+      diplomaUrl: "/assets/Zeugnisse/Bachelordiplom.pdf",
     },
     {
       degree: "Gymnasium mit Schwerpunkt Wirtschaft & Recht",
@@ -29,12 +33,16 @@ const educationByLang = {
       institution: "University of Bern",
       period: "2024 – 2026",
       details: "Focus on financial management.",
+      diplomaLabel: "Current transcript",
+      diplomaUrl: "/assets/Zeugnisse/2026-03-01_12.43.47_Studienblatt_English.pdf",
     },
     {
       degree: "Bachelor of Science in Business Administration and Data Science",
       institution: "University of Bern",
       period: "2020 – 2024",
       details: "Studies at the School of Business, Economics and Social Sciences.",
+      diplomaLabel: "Bachelor diploma",
+      diplomaUrl: "/assets/Zeugnisse/Bachelordiplom.pdf",
     },
     {
       degree: "High school with a focus on Economics & Law",
@@ -52,12 +60,12 @@ const EducationSection = () => {
       ? {
           eyebrow: "Education",
           title: "Academic background",
-          subtitle: "Degrees and certifications.",
+          subtitle: "Degrees and certifications",
         }
       : {
           eyebrow: "Ausbildung",
           title: "Akademischer Hintergrund",
-          subtitle: "Meine Studienabschlüsse und Zertifizierungen.",
+          subtitle: "Meine Studienabschlüsse",
         };
   const education = educationByLang[lang];
 
@@ -106,6 +114,16 @@ const EducationSection = () => {
                     <span className="text-accent text-sm font-medium mt-1 md:mt-0">{edu.period}</span>
                   </div>
                   <p className="text-muted-foreground text-sm leading-relaxed">{edu.details}</p>
+                  {edu.diplomaUrl && edu.diplomaLabel && (
+                    <a
+                      href={edu.diplomaUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block mt-3 text-sm font-medium text-accent hover:underline"
+                    >
+                      {edu.diplomaLabel}
+                    </a>
+                  )}
                 </div>
               </motion.div>
             ))}

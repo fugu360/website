@@ -11,12 +11,12 @@ const ProjectsSection = () => {
       ? {
           eyebrow: "Projects",
           title: "Projects",
-          subtitle: "Selected work and projects.",
+          subtitle: "Selected work and projects",
         }
       : {
           eyebrow: "Projekte",
           title: "Projekte",
-          subtitle: "Beispiele für Arbeiten und Projekte.",
+          subtitle: "Beispiele für Arbeiten und Projekte",
         };
   const basePath = isEnglish ? "/en" : "";
 

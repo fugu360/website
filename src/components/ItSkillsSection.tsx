@@ -24,12 +24,12 @@ const ItSkillsSection = () => {
       ? {
           eyebrow: "IT Skills",
           title: "IT Skills",
-          subtitle: "Technical tools at a glance.",
+          subtitle: "Technical tools at a glance",
         }
       : {
           eyebrow: "IT-Kenntnisse",
           title: "IT-Kenntnisse",
-          subtitle: "Fachliche Tools im Überblick.",
+          subtitle: "Fachliche Tools im Überblick",
         };
   const itSkills = itSkillsByLang[lang];
 

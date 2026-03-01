@@ -4,7 +4,7 @@ import { useLanguage } from "@/lib/i18n";
 
 const languagesByLang = {
   de: [
-    { name: "Deutsch", level: "Mündlich und schriftlich: sehr gut (Muttersprache)" },
+    { name: "Deutsch", level: "Muttersprache (mündlich und schriftlich)" },
     { name: "Englisch", level: "Mündlich und schriftlich: sehr gut (Niveau B2, ohne Diplom)" },
     { name: "Französisch", level: "Mündlich und schriftlich: sehr gut (Niveau B2, ohne Diplom)" },
     { name: "Niederländisch", level: "Gutes mündliches Verständnis" },
@@ -24,12 +24,12 @@ const SkillsSection = () => {
       ? {
           eyebrow: "Languages",
           title: "Language skills",
-          subtitle: "Languages and proficiency at a glance.",
+          subtitle: "Languages and proficiency at a glance",
         }
       : {
           eyebrow: "Sprachen",
           title: "Sprachkenntnisse",
-          subtitle: "Sprachen und Kompetenzniveau im Überblick.",
+          subtitle: "Sprachen und Kompetenzniveau im Überblick",
         };
   const languages = languagesByLang[lang];
 

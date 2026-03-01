@@ -3,10 +3,10 @@ import { User } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
 
 const aboutImages = [
-  "/assets/about me/WhatsApp Image 2026-02-10 at 19.20.22 (1).jpeg",
   "/assets/about me/WhatsApp Image 2026-02-10 at 19.20.22.jpeg",
   "/assets/about me/WhatsApp Image 2026-02-10 at 19.21.06.jpeg",
   "/assets/about me/WhatsApp Image 2026-02-10 at 19.22.02.jpeg",
+  "/assets/about me/WhatsApp Image 2026-02-10 at 19.20.22 (1).jpeg",
 ];
 
 const AboutSection = () => {
@@ -66,7 +66,7 @@ const AboutSection = () => {
         </h2>
         <p className="section-subtitle">{text.subtitle}</p>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-8 -mt-3">
           <div className="md:col-span-2 space-y-6">
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>{text.paragraphOne}</p>
@@ -81,7 +81,7 @@ const AboutSection = () => {
                   <img
                     src={encodeURI(image)}
                     alt={`${text.imageAltPrefix} ${index + 1}`}
-                    className={`h-full w-full object-cover aspect-[4/3] ${index === 0 ? "object-[50%_20%]" : "object-center"}`}
+                    className={`h-full w-full object-cover aspect-[4/3] ${image.includes("19.20.22 (1).jpeg") ? "object-[50%_20%]" : "object-center"}`}
                     loading="lazy"
                   />
                 </div>

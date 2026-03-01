@@ -88,6 +88,11 @@ export const projects: Project[] = [
       en: "This project covers the valuation of multiple derivatives and a structured product using analytical and numerical methods. The methodological focus is the combination of the Black-Scholes model and Monte Carlo simulations under a risk-neutral geometric Brownian motion assumption. First, a European call option is priced analytically with Black-Scholes and then used as a benchmark for simulation results. By progressively increasing the number of simulation paths, convergence of the Monte Carlo estimator and statistical error are analyzed. The full implementation is in Python. Price paths are simulated with NumPy and standard normal random draws, using daily discretization with 250 trading days per year. Pandas is used for time-series processing and analysis, and Matplotlib for graphical outputs such as histograms and sensitivity analyses. Historical market data and volatilities are retrieved via the Yahoo Finance API and processed in Python. In addition to European options, American put options, lookback options, and barrier options are simulated via adapted payoff functions, showing how different payoff structures can be integrated into the Monte Carlo framework. An empirical analysis of return distributions is also conducted, including mean, volatility, skewness, kurtosis, and quantiles. In the individual part, a capital-protected participation note on Alphabet is valued by decomposing the product into a bond component and a call-like option component. The option component is again valued with Monte Carlo simulation and compared to the issuance price. A volatility sensitivity analysis confirms the positive relationship between volatility and option value. The project combines financial theory with practical Python implementation and demonstrates quantitative valuation methods on real market products.",
     },
     pdfUrl: "/assets/projects/Derivatives Pricing.pdf",
+    grade: "5.5",
+    result: {
+      de: "Konvergente und robuste Bewertungsresultate über Black-Scholes und Monte-Carlo sowie nachvollziehbare Sensitivitätsanalysen.",
+      en: "Convergent and robust valuation results across Black-Scholes and Monte Carlo, supported by clear sensitivity analyses.",
+    },
     cardTech: ["Python"],
     skills: [
       "Black-Scholes-Modell",
@@ -107,7 +112,7 @@ export const projects: Project[] = [
       en: "Bachelor Thesis",
     },
     overview: {
-      de: "MILP-Modell für faire Gruppeneinteilung mit Noten und Soft Skills.",
+      de: "MILP-Modell für die faire Gruppeneinteilung von Studierenden.",
       en: "MILP model for fair group allocation with grades and soft skills.",
     },
     summary: {
@@ -117,8 +122,8 @@ export const projects: Project[] = [
     pdfUrl: "/assets/projects/Bachelorarbeit.pdf",
     grade: "5.5",
     result: {
-      de: "Pareto-effiziente Kompromisslösungen zwischen Diversität und Leistungsähnlichkeit.",
-      en: "Pareto-efficient trade-offs between diversity and performance similarity.",
+      de: "Pareto-effiziente Kompromisslösungen zwischen Diversität und Leistungsähnlichkeit als nachvollziehbare Grundlage für die Gruppeneinteilung von Studierenden.",
+      en: "Pareto-efficient trade-offs between diversity and performance similarity, validated through systematic scenario analyses and providing a transparent, robust basis for fair group allocation decisions.",
     },
     cardTech: ["Excel"],
     skills: [

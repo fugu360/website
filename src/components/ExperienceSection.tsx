@@ -2,7 +2,18 @@ import { motion } from "framer-motion";
 import { Briefcase } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
 
-const experiencesByLang = {
+type Experience = {
+  role: string;
+  company: string;
+  logoSrc?: string;
+  logoAlt?: string;
+  period: string;
+  tasks: string[];
+  certificateLabel?: string;
+  certificateUrl?: string;
+};
+
+const experiencesByLang: Record<"de" | "en", Experience[]> = {
   de: [
     {
       role: "Hilfsassistent",
@@ -25,6 +36,21 @@ const experiencesByLang = {
         "Kundenservice und Kassenabwicklung",
         "Sorgfalt im Umgang mit Geld und Abrechnungen",
       ],
+      certificateLabel: "Arbeitszeugnis Migros",
+      certificateUrl: "/assets/Zeugnisse/Arbeitsuzegnis Migros.pdf",
+    },
+    {
+      role: "Zivildienst",
+      company: "IGS",
+      logoSrc: "/assets/logos/igs.jfif",
+      logoAlt: "IGS Logo",
+      period: "Zivildienst",
+      tasks: [
+        "Prozess- und Organisationssupport (QMS, Datenstruktur, Prozessdarstellungen)",
+        "Administrative Projektunterstützung (Protokolle, Versand, Statistiken, Rechnungswesen)",
+      ],
+      certificateLabel: "Arbeitszeugnis IGS",
+      certificateUrl: "/assets/Zeugnisse/Arbeitszeugnis igs.pdf",
     },
   ],
   en: [
@@ -49,6 +75,21 @@ const experiencesByLang = {
         "Customer service and checkout operations",
         "Careful handling of cash and reconciliations",
       ],
+      certificateLabel: "Migros work reference",
+      certificateUrl: "/assets/Zeugnisse/Arbeitszeugnis_Migros_English.pdf",
+    },
+    {
+      role: "Civilian Service",
+      company: "IGS",
+      logoSrc: "/assets/logos/igs.jfif",
+      logoAlt: "IGS logo",
+      period: "Civilian service",
+      tasks: [
+        "Process and organizational support (QMS, data structure, process mapping)",
+        "Administrative project support (minutes, dispatch, statistics, accounting)",
+      ],
+      certificateLabel: "IGS work reference",
+      certificateUrl: "/assets/Zeugnisse/Arbeitszeugnis_IGS_English.pdf",
     },
   ],
 };
@@ -60,12 +101,12 @@ const ExperienceSection = () => {
       ? {
           eyebrow: "Experience",
           title: "Career journey",
-          subtitle: "Highlights of my professional path.",
+          subtitle: "Highlights of my professional path",
         }
       : {
           eyebrow: "Berufserfahrung",
           title: "Mein Werdegang",
-          subtitle: "Stationen meiner beruflichen Laufbahn.",
+          subtitle: "Stationen meiner beruflichen Laufbahn",
         };
   const experiences = experiencesByLang[lang];
 
@@ -111,7 +152,13 @@ const ExperienceSection = () => {
                   <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-3">
                     <div className="flex items-center gap-3">
                       <div className="h-12 w-12 flex items-center justify-center">
-                        <img src={exp.logoSrc} alt={exp.logoAlt} className="h-full w-full object-contain" />
+                        {exp.logoSrc ? (
+                          <img src={exp.logoSrc} alt={exp.logoAlt ?? `${exp.company} logo`} className="h-full w-full object-contain" />
+                        ) : (
+                          <div className="h-10 w-10 rounded-full bg-secondary text-foreground text-xs font-semibold flex items-center justify-center border border-border">
+                            {exp.company.slice(0, 3).toUpperCase()}
+                          </div>
+                        )}
                       </div>
                       <div>
                         <h3 className="font-semibold text-foreground">{exp.role}</h3>
@@ -127,6 +174,16 @@ const ExperienceSection = () => {
                       </li>
                     ))}
                   </ul>
+                  {exp.certificateUrl && exp.certificateLabel && (
+                    <a
+                      href={exp.certificateUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block mt-3 text-sm font-medium text-accent hover:underline"
+                    >
+                      {exp.certificateLabel}
+                    </a>
+                  )}
                 </div>
               </motion.div>
             ))}
