@@ -27,6 +27,19 @@ const experiencesByLang: Record<"de" | "en", Experience[]> = {
       ],
     },
     {
+      role: "Zivildienst",
+      company: "IGS",
+      logoSrc: "/assets/logos/igs.jfif",
+      logoAlt: "IGS Logo",
+      period: "Juni – August 2025",
+      tasks: [
+        "Prozess- und Organisationssupport (QMS, Datenstruktur, Prozessdarstellungen)",
+        "Administrative Projektunterstützung (Protokolle, Versand, Statistiken, Rechnungswesen)",
+      ],
+      certificateLabel: "Arbeitszeugnis IGS",
+      certificateUrl: "/assets/Zeugnisse/Arbeitszeugnis igs.pdf",
+    },
+    {
       role: "Kassierer",
       company: "Migros Brügg",
       logoSrc: "/assets/logos/genossenschaft_migros_aare_logo.jpg",
@@ -38,19 +51,6 @@ const experiencesByLang: Record<"de" | "en", Experience[]> = {
       ],
       certificateLabel: "Arbeitszeugnis Migros",
       certificateUrl: "/assets/Zeugnisse/Arbeitsuzegnis Migros.pdf",
-    },
-    {
-      role: "Zivildienst",
-      company: "IGS",
-      logoSrc: "/assets/logos/igs.jfif",
-      logoAlt: "IGS Logo",
-      period: "Zivildienst",
-      tasks: [
-        "Prozess- und Organisationssupport (QMS, Datenstruktur, Prozessdarstellungen)",
-        "Administrative Projektunterstützung (Protokolle, Versand, Statistiken, Rechnungswesen)",
-      ],
-      certificateLabel: "Arbeitszeugnis IGS",
-      certificateUrl: "/assets/Zeugnisse/Arbeitszeugnis igs.pdf",
     },
   ],
   en: [
@@ -66,6 +66,19 @@ const experiencesByLang: Record<"de" | "en", Experience[]> = {
       ],
     },
     {
+      role: "Civilian Service",
+      company: "IGS",
+      logoSrc: "/assets/logos/igs.jfif",
+      logoAlt: "IGS logo",
+      period: "June – August 2025",
+      tasks: [
+        "Process and organizational support (QMS, data structure, process mapping)",
+        "Administrative project support (minutes, dispatch, statistics, accounting)",
+      ],
+      certificateLabel: "IGS work reference",
+      certificateUrl: "/assets/Zeugnisse/Arbeitszeugnis_IGS_English.pdf",
+    },
+    {
       role: "Cashier",
       company: "Migros Brügg",
       logoSrc: "/assets/logos/genossenschaft_migros_aare_logo.jpg",
@@ -77,19 +90,6 @@ const experiencesByLang: Record<"de" | "en", Experience[]> = {
       ],
       certificateLabel: "Migros work reference",
       certificateUrl: "/assets/Zeugnisse/Arbeitszeugnis_Migros_English.pdf",
-    },
-    {
-      role: "Civilian Service",
-      company: "IGS",
-      logoSrc: "/assets/logos/igs.jfif",
-      logoAlt: "IGS logo",
-      period: "Civilian service",
-      tasks: [
-        "Process and organizational support (QMS, data structure, process mapping)",
-        "Administrative project support (minutes, dispatch, statistics, accounting)",
-      ],
-      certificateLabel: "IGS work reference",
-      certificateUrl: "/assets/Zeugnisse/Arbeitszeugnis_IGS_English.pdf",
     },
   ],
 };
