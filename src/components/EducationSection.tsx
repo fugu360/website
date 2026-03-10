@@ -70,7 +70,7 @@ const EducationSection = () => {
   const education = educationByLang[lang];
 
   return (
-    <section id="education">
+    <section id="education" className="bg-secondary/50">
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 40 }}

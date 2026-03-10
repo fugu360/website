@@ -111,7 +111,7 @@ const ExperienceSection = () => {
   const experiences = experiencesByLang[lang];
 
   return (
-    <section id="experience" className="bg-secondary/50">
+    <section id="experience">
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
