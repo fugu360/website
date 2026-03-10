@@ -184,8 +184,8 @@ u.d.N. \quad
           { symbol: "N", description: "Set of all time slots, indexed by n" },
           { symbol: "M", description: "Set of all majors, indexed by m" },
           { symbol: "R^m", description: "For major m, set of pairs (i,m) where student i has major m" },
-          { symbol: "M^j", description: "Big-M parameter in constraint j, j \in \{1,2,3,4\}" },
-          { symbol: "p^i", description: "GPA of student i, p^i \in [0,4]" },
+          { symbol: "M^j", description: "Big-M parameter in constraint j, j in {1,2,3,4}" },
+          { symbol: "p^i", description: "GPA of student i, p^i in [0,4]" },
           { symbol: "w", description: "Minimum number of common available time slots per group" },
           { symbol: "f^{max}", description: "Leadership threshold for indicator f^i" },
           { symbol: "k^{max}", description: "Social skills threshold for indicator k^i" },
@@ -202,8 +202,8 @@ u.d.N. \quad
           { symbol: "N", description: "Menge aller Zeitfenster, indexiert durch n" },
           { symbol: "M", description: "Menge aller Hauptfächer, indexiert durch m" },
           { symbol: "R^m", description: "Für Hauptfach m: Menge der Paarungen (i,m), wobei i Hauptfach m hat" },
-          { symbol: "M^j", description: "Big-M-Parameter in Nebenbedingung j, j \in \{1,2,3,4\}" },
-          { symbol: "p^i", description: "GPA von Studierendem i, p^i \in [0,4]" },
+          { symbol: "M^j", description: "Big-M-Parameter in Nebenbedingung j, j in {1,2,3,4}" },
+          { symbol: "p^i", description: "GPA von Studierendem i, p^i in [0,4]" },
           { symbol: "w", description: "Minimale Anzahl gemeinsamer verfügbarer Zeitfenster pro Gruppe" },
           { symbol: "f^{max}", description: "Schwellenwert der Führungskompetenz für Indikator f^i" },
           { symbol: "k^{max}", description: "Schwellenwert der Sozialkompetenz für Indikator k^i" },
@@ -307,7 +307,7 @@ u.d.N. \quad
             <a
               href={encodeURI(project.pdfUrl)}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="inline-flex items-center px-2.5 py-1 rounded-md border border-border text-xs font-medium text-accent hover:bg-secondary/70 transition-colors"
             >
               {labels.pdf}
@@ -317,7 +317,7 @@ u.d.N. \quad
             <a
               href={encodeURI(project.presentationUrl)}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="inline-flex items-center px-2.5 py-1 rounded-md border border-border text-xs font-medium text-accent hover:bg-secondary/70 transition-colors"
             >
               {labels.presentation}

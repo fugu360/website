@@ -8,12 +8,14 @@ const itSkillsByLang = {
     { name: "Python", level: "Sehr gut" },
     { name: "R", level: "Sehr gut" },
     { name: "SAP", level: "Gut" },
+    { name: "Git", level: "Gut" },
   ],
   en: [
     { name: "MS Excel", level: "Very good" },
     { name: "Python", level: "Very good" },
     { name: "R", level: "Very good" },
     { name: "SAP", level: "Good" },
+    { name: "Git", level: "Good" },
   ],
 };
 

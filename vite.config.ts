@@ -5,7 +5,8 @@ import path from "path";
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   server: {
-    host: "::",
+    // Restrict dev server to localhost to reduce LAN exposure during development.
+    host: "127.0.0.1",
     port: 8080,
     hmr: {
       overlay: false,
