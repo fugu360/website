@@ -5,6 +5,7 @@ export type Project = {
   title: LocalizedString;
   overview: LocalizedString;
   summary: LocalizedString;
+  githubUrl?: string;
   pdfUrl?: string;
   presentationUrl?: string;
   grade?: string;
@@ -181,7 +182,8 @@ export const projects: Project[] = [
       de: "Diese Website ist als persönliches Portfolio aufgebaut und zeigt Projekte, Werdegang, Ausbildung sowie Kontaktmöglichkeiten. Die Seite basiert auf Vite, React und Tailwind CSS, nutzt wiederverwendbare Komponenten und Framer Motion für Animationen. Inhalte sind in strukturierte Abschnitte gegliedert, inklusive Projektkarten und Detailseiten, auf denen PDFs geöffnet werden können. Gehostet wird die Website von mir selbst auf einem Raspberry Pi.",
       en: "This website is a personal portfolio showcasing projects, career, education, and contact options. It is built with Vite, React, and Tailwind CSS, uses reusable components and Framer Motion for animations, and organizes content into structured sections, including project cards and detail pages where PDFs can be opened. The site is self-hosted on a Raspberry Pi.",
     },
-    cardTech: ["React", "TypeScript"],
+    githubUrl: "https://github.com/fugu360/website",
+    cardTech: ["React", "TypeScript", "GitHub"],
     skills: [
       "Vite",
       "React",
@@ -189,6 +191,7 @@ export const projects: Project[] = [
       "Tailwind CSS",
       "shadcn-ui",
       "Framer Motion",
+      "GitHub",
     ],
   },
 ];

@@ -7,18 +7,18 @@ import { useLanguage } from "@/lib/i18n";
 const navItems = {
   de: [
     { label: "Über mich", href: "#about" },
+    { label: "Projekte", href: "#projects" },
     { label: "Berufserfahrung", href: "#experience" },
     { label: "Ausbildung", href: "#education" },
-    { label: "Projekte", href: "#projects" },
     { label: "IT-Kenntnisse", href: "#it-skills" },
     { label: "Sprachen", href: "#skills" },
     { label: "Kontakt", href: "#contact" },
   ],
   en: [
     { label: "About", href: "#about" },
+    { label: "Projects", href: "#projects" },
     { label: "Experience", href: "#experience" },
     { label: "Education", href: "#education" },
-    { label: "Projects", href: "#projects" },
     { label: "IT Skills", href: "#it-skills" },
     { label: "Languages", href: "#skills" },
     { label: "Contact", href: "#contact" },

@@ -296,12 +296,24 @@ u.d.N. \quad
           )}
           {project.cardTech && project.cardTech.length > 0 &&
             project.cardTech.map((tech) => (
-              <span
-                key={tech}
-                className="px-2.5 py-1 rounded-md bg-secondary text-secondary-foreground text-xs font-medium"
-              >
-                {tech}
-              </span>
+              tech === "GitHub" && project.githubUrl ? (
+                <a
+                  key={tech}
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-2.5 py-1 rounded-md border border-border text-xs font-medium text-accent hover:bg-secondary/70 transition-colors"
+                >
+                  {tech}
+                </a>
+              ) : (
+                <span
+                  key={tech}
+                  className="px-2.5 py-1 rounded-md bg-secondary text-secondary-foreground text-xs font-medium"
+                >
+                  {tech}
+                </span>
+              )
             ))}
           {project.pdfUrl && (
             <a
