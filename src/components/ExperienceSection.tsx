@@ -25,7 +25,7 @@ const experiencesByLang: Record<"de" | "en", Experience[]> = {
         "Unterstützung des internen Kontrollsystems",
         "Erstellung und Durchführung von Finanz- und Budgetplanungen",
       ],
-        certificateLabel: "Zwischenzeugnis IWI",
+        certificateLabel: "Zwischenzeugnis Uni Bern",
         certificateUrl: "/assets/Zeugnisse/Zwischenzeugnis IWI.pdf",
     },
     {
@@ -66,7 +66,7 @@ const experiencesByLang: Record<"de" | "en", Experience[]> = {
         "Support for the internal control system",
         "Preparation and execution of financial and budget planning",
       ],
-        certificateLabel: "IWI interim reference",
+        certificateLabel: "University of Bern interim reference",
         certificateUrl: "/assets/Zeugnisse/Zwischenzeugnis IWI.pdf",
     },
     {
