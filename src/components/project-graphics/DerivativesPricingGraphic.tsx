@@ -78,13 +78,13 @@ const DerivativesPricingGraphic = () => (
     </text>
 
     {/* Legend box */}
-    <rect x="538" y="28" width="194" height="72" fill="white" stroke="#e5e7eb" strokeWidth="1" rx="3" />
-    <line x1="548" y1="46" x2="578" y2="46" stroke="rgba(31,119,180,0.4)" strokeWidth="1.5" />
-    <text x="584" y="50" fill="#374151" fontSize="11" fontFamily="Arial, sans-serif">Simulationspfade</text>
-    <line x1="548" y1="64" x2="578" y2="64" stroke="#1f77b4" strokeWidth="2.5" />
-    <text x="584" y="68" fill="#374151" fontSize="11" fontFamily="Arial, sans-serif">E[S(t)]</text>
-    <line x1="548" y1="82" x2="578" y2="82" stroke="#ff7f0e" strokeWidth="1.5" strokeDasharray="8,5" />
-    <text x="584" y="86" fill="#374151" fontSize="11" fontFamily="Arial, sans-serif">Strike K</text>
+    <rect x="538" y="163" width="194" height="72" fill="white" stroke="#e5e7eb" strokeWidth="1" rx="3" />
+    <line x1="548" y1="181" x2="578" y2="181" stroke="rgba(31,119,180,0.4)" strokeWidth="1.5" />
+    <text x="584" y="185" fill="#374151" fontSize="11" fontFamily="Arial, sans-serif">Simulationspfade</text>
+    <line x1="548" y1="199" x2="578" y2="199" stroke="#1f77b4" strokeWidth="2.5" />
+    <text x="584" y="203" fill="#374151" fontSize="11" fontFamily="Arial, sans-serif">E[S(t)]</text>
+    <line x1="548" y1="217" x2="578" y2="217" stroke="#ff7f0e" strokeWidth="1.5" strokeDasharray="8,5" />
+    <text x="584" y="221" fill="#374151" fontSize="11" fontFamily="Arial, sans-serif">Strike K</text>
   </svg>
 );
 
