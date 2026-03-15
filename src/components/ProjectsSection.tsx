@@ -53,7 +53,7 @@ const ProjectsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: index * 0.04 }}
-          className="group relative overflow-hidden rounded-3xl border border-border/60 bg-card/80 transition-colors duration-300 hover:border-accent/35"
+          className="group relative h-full overflow-hidden rounded-3xl border border-border/60 bg-card/80 transition-colors duration-300 hover:border-accent/35"
         >
           <div className="relative h-[300px] md:h-[340px]">
             {project.previewImage ? (
@@ -158,14 +158,7 @@ const ProjectsSection = () => {
 
         <div>
           <div className="grid gap-6 md:grid-cols-2">
-            {projects.map((project, i) => {
-              const isLastOddItem = projects.length % 2 === 1 && i === projects.length - 1;
-              return (
-                <div key={project.slug} className={isLastOddItem ? "md:col-span-2" : ""}>
-                  {renderProjectPanel(project, i)}
-                </div>
-              );
-            })}
+            {projects.map((project, i) => renderProjectPanel(project, i))}
           </div>
         </div>
       </div>
