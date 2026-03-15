@@ -6,6 +6,15 @@ import Footer from "@/components/Footer";
 import { projects } from "@/data/projects";
 import { baseKeywords, setSeo } from "@/lib/seo";
 import { getLocalized, useLanguage } from "@/lib/i18n";
+import DerivativesPricingGraphic from "@/components/project-graphics/DerivativesPricingGraphic";
+import BachelorarbeitGraphic from "@/components/project-graphics/BachelorarbeitGraphic";
+import AgvSchedulingGraphic from "@/components/project-graphics/AgvSchedulingGraphic";
+
+const graphicComponents: Record<string, React.FC> = {
+  "derivatives-pricing": DerivativesPricingGraphic,
+  "bachelorarbeit": BachelorarbeitGraphic,
+  "agv-scheduling-dss": AgvSchedulingGraphic,
+};
 
 const ProjectDetail = () => {
   const { lang, isEnglish } = useLanguage();
@@ -357,6 +366,14 @@ u.d.N. \quad
                 />
               </div>
             )}
+            {showBachelorModel && graphicComponents["bachelorarbeit"] && (() => {
+              const Graphic = graphicComponents["bachelorarbeit"];
+              return (
+                <div className="mt-6 bg-card border border-border rounded-xl overflow-hidden aspect-[2/1]">
+                  <Graphic />
+                </div>
+              );
+            })()}
             <div className="mt-10 space-y-8">
             <div className="bg-card border border-border rounded-xl p-6">
               <h2 className="text-2xl font-semibold text-foreground mb-4">{labels.summary}</h2>
@@ -443,6 +460,14 @@ u.d.N. \quad
                 />
               </div>
             )}
+            {project.slug && graphicComponents[project.slug] && (() => {
+              const Graphic = graphicComponents[project.slug];
+              return (
+                <div className="mt-6 bg-card border border-border rounded-xl overflow-hidden aspect-[2/1]">
+                  <Graphic />
+                </div>
+              );
+            })()}
           <div className="mt-10 bg-card border border-border rounded-xl p-6">
             <h2 className="text-2xl font-semibold text-foreground mb-4">{labels.summary}</h2>
             <p className="text-muted-foreground leading-relaxed">

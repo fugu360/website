@@ -8,7 +8,6 @@ import ProjectsSection from "@/components/ProjectsSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import EducationSection from "@/components/EducationSection";
 import SkillsSection from "@/components/SkillsSection";
-import ItSkillsSection from "@/components/ItSkillsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import { baseKeywords, setSeo } from "@/lib/seo";
@@ -20,7 +19,7 @@ const Index = () => {
     setSeo({
       title: "Benjamin Oehrli - Portfolio",
       description:
-        "Portfolio von Benjamin Oehrli, Masterstudent Financial Management. Projekte in Finance, Operations Research, ESG und Python.",
+        "Portfolio von Benjamin Oehrli, Masterstudent Financial Management. Projekte in Finance, Operations Research und Python.",
       keywords: baseKeywords,
       canonical: "https://www.benjamin-oehrli.ch/",
       ogUrl: "https://www.benjamin-oehrli.ch/",
@@ -74,7 +73,6 @@ const Index = () => {
         <ProjectsSection />
         <ExperienceSection />
         <EducationSection />
-        <ItSkillsSection />
         <SkillsSection />
         <ContactSection />
       </main>

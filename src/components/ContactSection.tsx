@@ -18,7 +18,7 @@ const ContactSection = () => {
       : {
           eyebrow: "Kontakt",
           title: "Kontakt",
-          subtitle: "Ich freue mich über Rückmeldungen und Gespräche",
+          subtitle: "Ich freue mich über Rückmeldungen und Gespräche!",
           copy: "Kopieren",
           copied: "Kopiert!",
         };

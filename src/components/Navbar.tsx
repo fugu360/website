@@ -10,8 +10,7 @@ const navItems = {
     { label: "Projekte", href: "#projects" },
     { label: "Berufserfahrung", href: "#experience" },
     { label: "Ausbildung", href: "#education" },
-    { label: "IT-Kenntnisse", href: "#it-skills" },
-    { label: "Sprachen", href: "#skills" },
+    { label: "Kompetenzen", href: "#skills" },
     { label: "Kontakt", href: "#contact" },
   ],
   en: [
@@ -19,8 +18,7 @@ const navItems = {
     { label: "Projects", href: "#projects" },
     { label: "Experience", href: "#experience" },
     { label: "Education", href: "#education" },
-    { label: "IT Skills", href: "#it-skills" },
-    { label: "Languages", href: "#skills" },
+    { label: "Skills", href: "#skills" },
     { label: "Contact", href: "#contact" },
   ],
 };

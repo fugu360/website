@@ -8,12 +8,14 @@ const HeroSection = () => {
     de: {
       label: "Portfolio",
       subtitle: "Masterstudent Financial Management · Universität Bern",
+      chips: ["Finance & Investments", "Python & R", "Operations Research"],
       contact: "Kontakt",
       about: "Über mich",
     },
     en: {
       label: "Portfolio",
       subtitle: "MSc Financial Management student · University of Bern",
+      chips: ["Finance & Investments", "Python & R", "Operations Research"],
       contact: "Contact",
       about: "About",
     },
@@ -51,10 +53,26 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="text-primary-foreground/70 text-lg md:text-xl max-w-2xl mx-auto mb-10"
+          className="text-primary-foreground/70 text-lg md:text-xl max-w-2xl mx-auto mb-6"
         >
           {text.subtitle}
         </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.45 }}
+          className="flex flex-wrap justify-center gap-2 mb-10"
+        >
+          {text.chips.map((chip) => (
+            <span
+              key={chip}
+              className="rounded-full border border-primary-foreground/20 bg-primary-foreground/8 px-3.5 py-1 text-xs font-semibold tracking-wide text-primary-foreground/75 backdrop-blur-sm"
+            >
+              {chip}
+            </span>
+          ))}
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0 }}

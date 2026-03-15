@@ -1,41 +1,74 @@
 import { motion } from "framer-motion";
-import { Zap } from "lucide-react";
+import { BarChart2, Laptop, Languages } from "lucide-react";
 import { useLanguage } from "@/lib/i18n";
+
+// ─── Data ────────────────────────────────────────────────────────────────────
+
+const itSkills = [
+  { name: "MS Excel", level: 4 },
+  { name: "Python",   level: 4 },
+  { name: "R",        level: 4 },
+  { name: "SAP",      level: 3 },
+  { name: "Git",      level: 3 },
+];
 
 const languagesByLang = {
   de: [
-    { name: "Deutsch", level: "Muttersprache (mündlich und schriftlich)" },
-    { name: "Englisch", level: "Mündlich und schriftlich: sehr gut (Niveau B2, ohne Diplom)" },
-    { name: "Französisch", level: "Mündlich und schriftlich: sehr gut (Niveau B2, ohne Diplom)" },
-    { name: "Niederländisch", level: "Gutes mündliches Verständnis" },
+    { name: "Deutsch",        desc: "Muttersprache",         level: 5 },
+    { name: "Englisch",       desc: "Sehr gut · B2",         level: 4 },
+    { name: "Französisch",    desc: "Sehr gut · B2",         level: 4 },
+    { name: "Niederländisch", desc: "Gutes Hörverständnis",  level: 2 },
   ],
   en: [
-    { name: "German", level: "Native (spoken and written)" },
-    { name: "English", level: "Fluent (spoken and written, B2 level, no certificate)" },
-    { name: "French", level: "Fluent (spoken and written, B2 level, no certificate)" },
-    { name: "Dutch", level: "Good spoken comprehension" },
+    { name: "German",  desc: "Native",             level: 5 },
+    { name: "English", desc: "Fluent · B2",        level: 4 },
+    { name: "French",  desc: "Fluent · B2",        level: 4 },
+    { name: "Dutch",   desc: "Good comprehension", level: 2 },
   ],
 };
+
+// ─── Proficiency dots ─────────────────────────────────────────────────────────
+
+const Dots = ({ level }: { level: number }) => (
+  <div className="flex gap-1.5 shrink-0">
+    {Array.from({ length: 5 }, (_, i) => (
+      <div
+        key={i}
+        className={`h-2 w-2 rounded-full transition-colors ${
+          i < level ? "bg-accent" : "bg-border"
+        }`}
+      />
+    ))}
+  </div>
+);
+
+// ─── Component ───────────────────────────────────────────────────────────────
 
 const SkillsSection = () => {
   const { lang } = useLanguage();
   const text =
     lang === "en"
       ? {
-          eyebrow: "Languages",
-          title: "Language skills",
-          subtitle: "Languages and proficiency at a glance",
+          eyebrow: "Skills",
+          title: "Competencies",
+          subtitle: "IT tools and languages at a glance",
+          itTitle: "IT Tools",
+          langTitle: "Languages",
         }
       : {
-          eyebrow: "Sprachen",
-          title: "Sprachkenntnisse",
-          subtitle: "Sprachen und Kompetenzniveau im Überblick",
+          eyebrow: "Kompetenzen",
+          title: "Kompetenzen",
+          subtitle: "IT-Tools und Sprachen im Überblick",
+          itTitle: "IT-Tools",
+          langTitle: "Sprachen",
         };
+
   const languages = languagesByLang[lang];
 
   return (
     <section id="skills" className="bg-secondary/50">
       <div className="section-container">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -43,7 +76,7 @@ const SkillsSection = () => {
           transition={{ duration: 0.6 }}
         >
           <div className="flex items-center gap-3 mb-2">
-            <Zap size={20} className="text-accent" />
+            <BarChart2 size={20} className="text-accent" />
             <p className="text-accent font-medium text-sm tracking-widest uppercase">
               {text.eyebrow}
             </p>
@@ -54,20 +87,66 @@ const SkillsSection = () => {
           <p className="section-subtitle">{text.subtitle}</p>
         </motion.div>
 
-        <div className="grid gap-6 md:grid-cols-2">
-          {languages.map((language, i) => (
-            <motion.div
-              key={language.name}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.05 }}
-              className="bg-card rounded-xl border border-border p-6"
-            >
-              <h3 className="font-semibold text-foreground mb-2">{language.name}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">{language.level}</p>
-            </motion.div>
-          ))}
+        {/* Two-column grid */}
+        <div className="grid gap-10 md:grid-cols-2">
+          {/* IT Tools */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <h3 className="mb-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+              <Laptop size={14} />
+              {text.itTitle}
+            </h3>
+            <div className="space-y-2">
+              {itSkills.map((skill, i) => (
+                <motion.div
+                  key={skill.name}
+                  initial={{ opacity: 0, x: -12 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: i * 0.06 }}
+                  className="flex items-center justify-between rounded-lg border border-border bg-card px-4 py-3"
+                >
+                  <span className="text-sm font-medium text-foreground">{skill.name}</span>
+                  <Dots level={skill.level} />
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Languages */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            <h3 className="mb-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+              <Languages size={14} />
+              {text.langTitle}
+            </h3>
+            <div className="space-y-2">
+              {languages.map((language, i) => (
+                <motion.div
+                  key={language.name}
+                  initial={{ opacity: 0, x: -12 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: i * 0.06 }}
+                  className="flex items-center justify-between rounded-lg border border-border bg-card px-4 py-3"
+                >
+                  <div>
+                    <span className="text-sm font-medium text-foreground">{language.name}</span>
+                    <p className="mt-0.5 text-xs text-muted-foreground">{language.desc}</p>
+                  </div>
+                  <Dots level={language.level} />
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

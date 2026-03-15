@@ -12,6 +12,7 @@ export type Project = {
   cardTech?: string[];
   skills?: string[];
   result?: LocalizedString;
+  previewImage?: string;
 };
 
 export const projects: Project[] = [
@@ -35,6 +36,8 @@ export const projects: Project[] = [
       de: "Optimiertes Portfolio mit geringerer Volatilität und besserer Sortino Ratio als der SMI.",
       en: "Optimized portfolio with lower volatility and a better Sortino ratio than the SMI.",
     },
+    previewImage: "/assets/projects/portfolio_smi_white_background.png",
+
     cardTech: ["Python"],
     skills: [
       "Portfolio-Optimierung (Mean-Variance)",
@@ -64,6 +67,8 @@ export const projects: Project[] = [
       de: "Relative Underperformance der US-Märkte nach dem Ereignis bei stabileren internationalen Indizes.",
       en: "Relative underperformance of US markets after the event, with more stable international indices.",
     },
+    previewImage: "/assets/projects/Auswirkung der Trump-Wahl auf ausgewählte.png",
+
     cardTech: ["R"],
     skills: [
       "Empirische Datenanalyse",
@@ -94,6 +99,7 @@ export const projects: Project[] = [
       de: "Konvergente und robuste Bewertungsresultate über Black-Scholes und Monte-Carlo sowie nachvollziehbare Sensitivitätsanalysen.",
       en: "Convergent and robust valuation results across Black-Scholes and Monte Carlo, supported by clear sensitivity analyses.",
     },
+
     cardTech: ["Python"],
     skills: [
       "Black-Scholes-Modell",
@@ -126,6 +132,7 @@ export const projects: Project[] = [
       de: "Pareto-effiziente Kompromisslösungen zwischen Diversität und Leistungsähnlichkeit als nachvollziehbare Grundlage für die Gruppeneinteilung von Studierenden.",
       en: "Pareto-efficient trade-offs between diversity and performance similarity, validated through systematic scenario analyses and providing a transparent, robust basis for fair group allocation decisions.",
     },
+
     cardTech: ["Excel"],
     skills: [
       "Mathematische Optimierung (MILP)",
@@ -156,6 +163,7 @@ export const projects: Project[] = [
       de: "Transparente Planungsszenarien und bessere Entscheidungsgrundlagen für den AGV-Einsatz.",
       en: "Transparent planning scenarios and improved decision basis for AGV deployment.",
     },
+
     cardTech: ["Excel", "VBA"],
     skills: [
       "Entscheidungsunterstützungssysteme (Decision Support Systems)",
@@ -183,6 +191,8 @@ export const projects: Project[] = [
       en: "This website is a personal portfolio showcasing projects, career, education, and contact options. It is built with Vite, React, and Tailwind CSS, uses reusable components and Framer Motion for animations, and organizes content into structured sections, including project cards and detail pages where PDFs can be opened. The site is self-hosted on a Raspberry Pi.",
     },
     githubUrl: "https://github.com/fugu360/website",
+    previewImage: "/assets/projects/portfolio-website-filler-light.svg",
+
     cardTech: ["React", "TypeScript", "GitHub"],
     skills: [
       "Vite",
