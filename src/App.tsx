@@ -10,6 +10,7 @@ import ProjectDetail from "./pages/ProjectDetail";
 import { LanguageProvider } from "@/lib/i18n";
 
 const queryClient = new QueryClient();
+const RETURN_TO_PROJECTS_KEY = "return-to-projects";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -23,38 +24,50 @@ const ScrollToTop = () => {
 
     const isHomePath = pathname === "/" || pathname === "/en";
     const cameFromProjectDetail = /\/projects\//.test(previousPathname.current);
+    const shouldReturnToProjects = sessionStorage.getItem(RETURN_TO_PROJECTS_KEY) === "true";
+
+    const scrollToProjects = () => {
+      const target = document.getElementById("projects");
+      if (!target) {
+        return;
+      }
+
+      const html = document.documentElement;
+      const body = document.body;
+      const previousHtmlBehavior = html.style.scrollBehavior;
+      const previousBodyBehavior = body.style.scrollBehavior;
+
+      html.style.scrollBehavior = "auto";
+      body.style.scrollBehavior = "auto";
+      target.scrollIntoView({ behavior: "auto", block: "start" });
+
+      window.setTimeout(() => {
+        html.style.scrollBehavior = previousHtmlBehavior;
+        body.style.scrollBehavior = previousBodyBehavior;
+      }, 0);
+    };
 
     // Browser back from a project detail page should land directly on the projects section.
-    if (navigationType === "POP" && isHomePath && cameFromProjectDetail) {
-      const target = document.getElementById("projects");
-      if (target) {
-        const html = document.documentElement;
-        const body = document.body;
-        const previousHtmlBehavior = html.style.scrollBehavior;
-        const previousBodyBehavior = body.style.scrollBehavior;
+    if (navigationType === "POP" && isHomePath && (cameFromProjectDetail || shouldReturnToProjects)) {
+      sessionStorage.removeItem(RETURN_TO_PROJECTS_KEY);
+      const frameId = window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(scrollToProjects);
+      });
 
-        html.style.scrollBehavior = "auto";
-        body.style.scrollBehavior = "auto";
-        target.scrollIntoView({ behavior: "auto", block: "start" });
-
-        const restoreId = window.setTimeout(() => {
-          html.style.scrollBehavior = previousHtmlBehavior;
-          body.style.scrollBehavior = previousBodyBehavior;
-        }, 0);
-
-        previousPathname.current = pathname;
-        return () => {
-          window.clearTimeout(restoreId);
-          html.style.scrollBehavior = previousHtmlBehavior;
-          body.style.scrollBehavior = previousBodyBehavior;
-        };
-      }
+      previousPathname.current = pathname;
+      return () => {
+        window.cancelAnimationFrame(frameId);
+      };
     }
 
     // Keep browser back/forward behavior in all other cases.
     if (navigationType === "POP") {
       previousPathname.current = pathname;
       return;
+    }
+
+    if (isHomePath) {
+      sessionStorage.removeItem(RETURN_TO_PROJECTS_KEY);
     }
 
     const html = document.documentElement;

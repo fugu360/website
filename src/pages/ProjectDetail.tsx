@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { BlockMath, InlineMath } from "react-katex";
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
@@ -18,6 +18,7 @@ const graphicComponents: Record<string, React.FC> = {
 
 const ProjectDetail = () => {
   const { lang, isEnglish } = useLanguage();
+  const location = useLocation();
   const { slug } = useParams();
   const project = projects.find((item) => item.slug === slug);
   const showPortfolioModel = project?.slug === "aktives-portfoliomanagement";
@@ -70,6 +71,12 @@ const ProjectDetail = () => {
           tableMeaning: "Bedeutung",
           tableVariables: "Variablen",
         };
+
+  useEffect(() => {
+    if ((location.state as { returnToProjects?: boolean } | null)?.returnToProjects) {
+      sessionStorage.setItem("return-to-projects", "true");
+    }
+  }, [location.state]);
 
   useEffect(() => {
     if (!project) {

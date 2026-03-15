@@ -47,7 +47,12 @@ const ProjectsSection = () => {
     const useContainImage = Boolean(containImageBySlug[project.slug]);
 
     return (
-      <Link key={project.slug} to={`${basePath}/projects/${project.slug}`} className="block">
+      <Link
+        key={project.slug}
+        to={`${basePath}/projects/${project.slug}`}
+        state={{ returnToProjects: true }}
+        className="block"
+      >
         <motion.div
           initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
