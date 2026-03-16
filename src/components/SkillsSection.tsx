@@ -5,7 +5,7 @@ import { useLanguage } from "@/lib/i18n";
 // ─── Data ────────────────────────────────────────────────────────────────────
 
 const itSkills = [
-  { name: "MS Excel", level: 4 },
+  { name: "MS Excel", level: 5 },
   { name: "Python",   level: 4 },
   { name: "R",        level: 4 },
   { name: "SAP",      level: 3 },
