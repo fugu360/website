@@ -42,6 +42,8 @@ const KNOWLEDGE_FILES = [
 ];
 
 // Middleware
+// Apache reverse proxy forwards X-Forwarded-For. Trust one proxy hop.
+app.set("trust proxy", 1);
 app.use(helmet());
 app.use(cors());
 app.use(express.json({ limit: "10mb" }));
@@ -51,6 +53,8 @@ const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100, // limit each IP to 100 requests per windowMs
   message: "Too many requests from this IP, please try again later.",
+  standardHeaders: true,
+  legacyHeaders: false,
 });
 
 app.use(limiter);
@@ -198,6 +202,8 @@ app.get("/health", (req, res) => {
 
 // Chat endpoint
 app.post("/api/chat", async (req, res) => {
+  let relevantKnowledge = [];
+
   try {
     const { message, conversationHistory = [], language = "en" } = req.body;
 
@@ -220,7 +226,7 @@ app.post("/api/chat", async (req, res) => {
     }
 
     const systemPrompt = language === "en" ? SYSTEM_PROMPT_EN : SYSTEM_PROMPT_DE;
-    const relevantKnowledge = getRelevantKnowledge(message);
+    relevantKnowledge = getRelevantKnowledge(message);
 
     // Build conversation for context
     let conversationText = "";
@@ -281,6 +287,27 @@ app.post("/api/chat", async (req, res) => {
     });
   } catch (error) {
     console.error("Chat error:", error.message);
+
+    if (error.code === "ECONNABORTED") {
+      if (relevantKnowledge.length > 0) {
+        const compactFacts = relevantKnowledge
+          .slice(0, 2)
+          .map((item) => `${item.source}: ${item.text}`)
+          .join("\n\n");
+
+        return res.status(200).json({
+          message:
+            "Die Antwort vom Modell dauert aktuell zu lange. Hier sind direkt passende Informationen aus den Website-Dateien:\n\n" +
+            compactFacts,
+          model: OLLAMA_MODEL,
+          fallback: true,
+        });
+      }
+
+      return res.status(504).json({
+        error: "AI timeout - please retry with a shorter question",
+      });
+    }
 
     if (error.code === "ECONNREFUSED") {
       return res.status(503).json({
