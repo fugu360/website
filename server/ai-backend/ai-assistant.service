@@ -1,0 +1,23 @@
+[Unit]
+Description=Benjamin's AI Assistant Backend
+After=network.target ollama.service
+Wants=ollama.service
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/Lovable\ 2/server/ai-backend
+Environment="PATH=/usr/local/bin:/usr/bin:/bin"
+Environment="NODE_ENV=production"
+Environment="PORT=3001"
+Environment="OLLAMA_BASE_URL=http://localhost:11434"
+Environment="OLLAMA_MODEL=mistral"
+ExecStart=/usr/bin/node server.js
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=ai-assistant
+
+[Install]
+WantedBy=multi-user.target

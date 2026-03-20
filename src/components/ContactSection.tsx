@@ -47,8 +47,8 @@ const ContactSection = () => {
   }, []);
 
   return (
-    <section id="contact" className="bg-primary">
-      <div className="section-container text-center">
+    <section id="contact" className="relative h-screen flex items-center justify-center overflow-hidden bg-primary">
+      <div className="relative z-10 section-container text-center w-full flex flex-col items-center justify-center">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
