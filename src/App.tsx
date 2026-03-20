@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ProjectDetail from "./pages/ProjectDetail";
 import { LanguageProvider } from "@/lib/i18n";
+import GoToTopButton from "@/components/GoToTopButton";
 
 const queryClient = new QueryClient();
 const RETURN_TO_PROJECTS_KEY = "return-to-projects";
@@ -109,6 +110,7 @@ const App = () => (
       <BrowserRouter>
         <LanguageProvider>
           <ScrollToTop />
+          <GoToTopButton />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/en" element={<Index />} />
