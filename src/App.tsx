@@ -8,7 +8,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ProjectDetail from "./pages/ProjectDetail";
 import { LanguageProvider } from "@/lib/i18n";
-import AIAssistant from "@/components/AIAssistant";
+
 const queryClient = new QueryClient();
 const RETURN_TO_PROJECTS_KEY = "return-to-projects";
 
@@ -109,7 +109,6 @@ const App = () => (
       <BrowserRouter>
         <LanguageProvider>
           <ScrollToTop />
-          <AIAssistant />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/en" element={<Index />} />
