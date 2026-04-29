@@ -66,7 +66,7 @@ const SkillsSection = () => {
   const languages = languagesByLang[lang];
 
   return (
-    <section id="skills" className="bg-secondary/50">
+    <section id="skills">
       <div className="section-container">
         {/* Header */}
         <motion.div

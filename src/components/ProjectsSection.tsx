@@ -143,7 +143,7 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section id="projects" className="bg-secondary/50">
+    <section id="projects">
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 40 }}

@@ -22,8 +22,10 @@ const experiencesByLang: Record<"de" | "en", Experience[]> = {
       logoAlt: "Universität Bern Logo",
       period: "Seit August 2023",
       tasks: [
-        "Unterstützung des internen Kontrollsystems",
-        "Erstellung und Durchführung von Finanz- und Budgetplanungen",
+        "Planen, budgetieren und überwachen finanzieller Ressourcen",
+        "Erheben und analysieren von periodischen Reportings und finanziellen Trendrechnungen",
+        "Mitverantwortung für die Führung und Weiterentwicklung des internen Kontrollsystems",
+        "Analysieren und optimieren von Geschäftsprozessen zur Steigerung der Effizienz und Skalierbarkeit",
       ],
         certificateLabel: "Zwischenzeugnis Uni Bern",
         certificateUrl: "/assets/Zeugnisse/Zwischenzeugnis IWI.pdf",
@@ -115,7 +117,7 @@ const ExperienceSection = () => {
   const experiences = experiencesByLang[lang];
 
   return (
-    <section id="experience">
+    <section id="experience" className="bg-secondary/50">
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 40 }}

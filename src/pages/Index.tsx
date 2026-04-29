@@ -3,8 +3,8 @@ import { useLocation } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
-import ProjectsSection from "@/components/ProjectsSection";
 import ExperienceSection from "@/components/ExperienceSection";
+import ProjectsSection from "@/components/ProjectsSection";
 import EducationSection from "@/components/EducationSection";
 import SkillsSection from "@/components/SkillsSection";
 import ContactSection from "@/components/ContactSection";
@@ -69,8 +69,8 @@ const Index = () => {
       <main>
         <HeroSection />
         <AboutSection />
-        <ProjectsSection />
         <ExperienceSection />
+        <ProjectsSection />
         <EducationSection />
         <SkillsSection />
         <ContactSection />
