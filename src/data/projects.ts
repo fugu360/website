@@ -17,6 +17,35 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "masterarbeit",
+    title: {
+      de: "Masterarbeit",
+      en: "Master Thesis",
+    },
+    overview: {
+      de: "Fix-and-Optimize-Matheuristiken für das Patient Admission Scheduling Problem.",
+      en: "Fix-and-Optimize Matheuristics for the Patient Admission Scheduling Problem.",
+    },
+    summary: {
+      de: "Diese Masterarbeit befasst sich mit dem statischen Patient Admission Scheduling (PAS) Problem in der Formulierung von Turhan und Bilgen (2017): die Zuteilung elektiver Patientinnen und Patienten zu Spitalzimmern über einen fixen Planungshorizont unter Berücksichtigung medizinischer Anforderungen, Kapazitäts- und Genderrestriktionen sowie individueller Präferenzen. Vor dem Hintergrund von 97.2 Milliarden Franken Gesundheitskosten in der Schweiz im Jahr 2024 und steigendem Kostendruck entwickelten wir zwei Fix-and-Optimize-Matheuristiken, die auf den zwölf Benchmark-Instanzen der PAS-Website gegen das vollständige MILP-Modell innerhalb eines Zeitlimits von einer Stunde getestet werden. Die Adaptive Cohort Fix-and-Optimize Matheuristik definiert Teilprobleme über Patientenkohorten mit identischem Aufnahmedatum, ausgewählt anhand individueller Strafwerte, und erweitert das Aufnahmefenster sukzessive, um lokale Minima zu verlassen. Die Multi-Strategy Fix-and-Optimize Matheuristik kombiniert drei komplementäre Dekompositionsstrategien — Raum-Clustering, gleitende Zeitfenster und Tauschketten gegenseitig blockierender Patientinnen und Patienten —, die alternierend zum Einsatz kommen, bis drei aufeinanderfolgende Durchläufe keine Verbesserung mehr liefern. Auf den grossen Instanzen, auf denen das exakte Modell innerhalb des Zeitbudgets keinen sinnvollen Optimalitäts-Gap schliessen kann, liefern beide Matheuristiken deutlich bessere Zielfunktionswerte. Die Multi-Strategy-Matheuristik erreicht auf allen zwölf Instanzen eine Lösung innerhalb von 20% des finalen MILP-Zielwerts in durchschnittlich rund einer Minute und im schlechtesten Fall unter vier Minuten.",
+      en: "This master's thesis addresses the static Patient Admission Scheduling (PAS) problem in the formulation of Turhan and Bilgen (2017): the assignment of elective patients to hospital rooms over a fixed planning horizon, subject to medical requirements, capacity and gender constraints, and individual preferences. Against a backdrop of CHF 97.2 billion in Swiss healthcare costs in 2024 and increasing cost pressure, we developed two Fix-and-Optimize matheuristics benchmarked against the full MILP model on twelve instances from the PAS benchmark website within a one-hour time limit. The Adaptive Cohort Fix-and-Optimize Matheuristic defines subproblems over patient cohorts with identical admission dates, selected by individual penalty scores, and successively expands the admission window to escape local optima. The Multi-Strategy Fix-and-Optimize Matheuristic combines three complementary decomposition strategies — room clustering, sliding time windows, and swap chains of mutually blocking patients — applied in alternation until three consecutive passes yield no improvement. On large instances where the exact model cannot close a meaningful optimality gap within the time budget, both matheuristics deliver substantially better objective values. The Multi-Strategy Matheuristic reaches a solution within 20% of the final MILP objective value in an average of about one minute and under four minutes in the worst case across all twelve benchmark instances.",
+    },
+    pdfUrl: "/assets/projects/Optimizing Patient Admission Using Mathematical Programming_Oehrli_Szabò_final (1).pdf",
+    result: {
+      de: "Beide Matheuristiken übertreffen das exakte MILP-Modell auf grossen Instanzen deutlich. Die Multi-Strategy-Matheuristik erreicht auf allen zwölf Benchmark-Instanzen eine Lösung innerhalb von 20% des finalen MILP-Zielwerts in durchschnittlich rund einer Minute und unter vier Minuten im schlechtesten Fall.",
+      en: "Both matheuristics substantially outperform the exact MILP model on large instances. The Multi-Strategy Matheuristic reaches a solution within 20% of the final MILP objective value in an average of about one minute and under four minutes in the worst case across all twelve benchmark instances.",
+    },
+    cardTech: ["Python"],
+    skills: [
+      "Mathematische Optimierung (MILP)",
+      "Matheuristiken / Fix-and-Optimize",
+      "Dekompositions- & Clustering-Methoden",
+      "Operations Research & Scheduling",
+      "Benchmarking & experimentelle Auswertung",
+      "Python",
+    ],
+  },
+  {
     slug: "aktives-portfoliomanagement",
     title: {
       de: "Aktives Portfoliomanagement",

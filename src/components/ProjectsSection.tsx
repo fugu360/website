@@ -6,11 +6,13 @@ import { getLocalized, useLanguage } from "@/lib/i18n";
 import DerivativesPricingGraphic from "./project-graphics/DerivativesPricingGraphic";
 import BachelorarbeitGraphic from "./project-graphics/BachelorarbeitGraphic";
 import AgvSchedulingGraphic from "./project-graphics/AgvSchedulingGraphic";
+import MasterarbeitGraphic from "./project-graphics/MasterarbeitGraphic";
 
 const graphicComponents: Record<string, React.FC> = {
   "derivatives-pricing": DerivativesPricingGraphic,
   "bachelorarbeit": BachelorarbeitGraphic,
   "agv-scheduling-dss": AgvSchedulingGraphic,
+  "masterarbeit": MasterarbeitGraphic,
 };
 
 const imageFocusBySlug: Record<string, string> = {

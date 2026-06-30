@@ -9,11 +9,13 @@ import { getLocalized, useLanguage } from "@/lib/i18n";
 import DerivativesPricingGraphic from "@/components/project-graphics/DerivativesPricingGraphic";
 import BachelorarbeitGraphic from "@/components/project-graphics/BachelorarbeitGraphic";
 import AgvSchedulingGraphic from "@/components/project-graphics/AgvSchedulingGraphic";
+import MasterarbeitGraphic from "@/components/project-graphics/MasterarbeitGraphic";
 
 const graphicComponents: Record<string, React.FC> = {
   "derivatives-pricing": DerivativesPricingGraphic,
   "bachelorarbeit": BachelorarbeitGraphic,
   "agv-scheduling-dss": AgvSchedulingGraphic,
+  "masterarbeit": MasterarbeitGraphic,
 };
 
 const ProjectDetail = () => {
@@ -23,7 +25,8 @@ const ProjectDetail = () => {
   const project = projects.find((item) => item.slug === slug);
   const showPortfolioModel = project?.slug === "aktives-portfoliomanagement";
   const showBachelorModel = project?.slug === "bachelorarbeit";
-  const showModelSection = showPortfolioModel || showBachelorModel;
+  const showMasterModel = project?.slug === "masterarbeit";
+  const showModelSection = showPortfolioModel || showBachelorModel || showMasterModel;
   const showTrumpImage = project?.slug === "auswirkung-der-trump-wahl";
   const canonicalBase = isEnglish
     ? "https://www.benjamin-oehrli.ch/en"
@@ -251,6 +254,66 @@ u.d.N. \quad
           { symbol: "h_g", description: "Höchster GPA in Gruppe g" },
           { symbol: "l_g", description: "Niedrigster GPA in Gruppe g" },
         ];
+  const masterObjectiveLatex = String.raw`\min \quad \sum_{p\in P,\;r\in R,\;d\in D} C_{p,r}\cdot x_{p,r,d} \;+\; \sum_{r\in R,\;d\in D} w_{RG}\cdot b_{r,d} \;+\; \sum_{p\in P,\;r\in R,\;d\in D} w_{Tr}\cdot t_{p,r,d}`;
+  const masterConstraintsLatex = [
+    String.raw`\sum_{r\in R} x_{p,r,d} = 1 \quad \forall\,p\in P,\;d\in D_p`,
+    String.raw`\sum_{p\in P} x_{p,r,d} \le c_r \quad \forall\,r\in R,\;d\in D`,
+    String.raw`f_{r,d} \ge x_{p,r,d} \quad \forall\,p\in P_F,\;r\in R,\;d\in D`,
+    String.raw`m_{r,d} \ge x_{p,r,d} \quad \forall\,p\in P_M,\;r\in R,\;d\in D`,
+    String.raw`b_{r,d} \ge m_{r,d} + f_{r,d} - 1 \quad \forall\,r\in R,\;d\in D`,
+    String.raw`t_{p,r,d} \ge x_{p,r,d} - x_{p,r,d+1} \quad \forall\,p\in P,\;r\in R,\;d\in D_p,\;d < DD_p - 1`,
+    String.raw`x_{p,r,d} \in \{0,1\} \quad \forall\,p\in P,\;r\in R,\;d\in D`,
+    String.raw`t_{p,r,d} \in \{0,1\} \quad \forall\,p\in P,\;r\in R,\;d\in D`,
+    String.raw`f_{r,d} \in \{0,1\} \quad \forall\,r\in R,\;d\in D`,
+    String.raw`m_{r,d} \in \{0,1\} \quad \forall\,r\in R,\;d\in D`,
+    String.raw`b_{r,d} \in \{0,1\} \quad \forall\,r\in R,\;d\in D`,
+  ];
+  const masterNotation =
+    lang === "en"
+      ? [
+          { symbol: "P",         description: "Set of patients" },
+          { symbol: "P_M",       description: "Set of male patients, P_M ⊆ P" },
+          { symbol: "P_F",       description: "Set of female patients, P_F ⊆ P" },
+          { symbol: "D",         description: "Set of days" },
+          { symbol: "D_p",       description: "Set of days on which patient p occupies a bed, D_p = {AD_p, …, DD_p − 1}" },
+          { symbol: "R",         description: "Set of rooms" },
+          { symbol: "c_r",       description: "Capacity of room r" },
+          { symbol: "AD_p",      description: "Admission date of patient p" },
+          { symbol: "DD_p",      description: "Discharge date of patient p" },
+          { symbol: "C_{p,r}",   description: "Penalty of assigning patient p to room r (blends all room-specific penalties except gender policy and transfer)" },
+          { symbol: "w_{RG}",    description: "Weight of the room gender policy penalty" },
+          { symbol: "w_{Tr}",    description: "Weight of the transfer penalty" },
+        ]
+      : [
+          { symbol: "P",         description: "Menge der Patientinnen und Patienten" },
+          { symbol: "P_M",       description: "Menge der männlichen Patienten, P_M ⊆ P" },
+          { symbol: "P_F",       description: "Menge der weiblichen Patientinnen, P_F ⊆ P" },
+          { symbol: "D",         description: "Menge der Tage" },
+          { symbol: "D_p",       description: "Menge der Tage, an denen Patient p ein Bett belegt, D_p = {AD_p, …, DD_p − 1}" },
+          { symbol: "R",         description: "Menge der Zimmer" },
+          { symbol: "c_r",       description: "Kapazität von Zimmer r" },
+          { symbol: "AD_p",      description: "Aufnahmedatum von Patient p" },
+          { symbol: "DD_p",      description: "Entlassdatum von Patient p" },
+          { symbol: "C_{p,r}",   description: "Strafwert für die Zuteilung von Patient p zu Zimmer r (beinhaltet alle zimmerspezifischen Strafwerte ausser Genderpolitik und Transfer)" },
+          { symbol: "w_{RG}",    description: "Gewicht der Genderpolitik-Nebenbedingung" },
+          { symbol: "w_{Tr}",    description: "Gewicht der Transfer-Nebenbedingung" },
+        ];
+  const masterVariables =
+    lang === "en"
+      ? [
+          { symbol: "x_{p,r,d}", description: "1 if patient p is assigned to room r on day d; 0 otherwise" },
+          { symbol: "t_{p,r,d}", description: "1 if patient p is transferred from room r on day d; 0 otherwise" },
+          { symbol: "f_{r,d}",   description: "1 if there is at least one female patient in room r on day d; 0 otherwise" },
+          { symbol: "m_{r,d}",   description: "1 if there is at least one male patient in room r on day d; 0 otherwise" },
+          { symbol: "b_{r,d}",   description: "1 if there are both male and female patients in room r on day d; 0 otherwise" },
+        ]
+      : [
+          { symbol: "x_{p,r,d}", description: "1, wenn Patient p in Zimmer r an Tag d zugewiesen ist; sonst 0" },
+          { symbol: "t_{p,r,d}", description: "1, wenn Patient p an Tag d aus Zimmer r verlegt wird; sonst 0" },
+          { symbol: "f_{r,d}",   description: "1, wenn mindestens eine weibliche Patientin in Zimmer r an Tag d ist; sonst 0" },
+          { symbol: "m_{r,d}",   description: "1, wenn mindestens ein männlicher Patient in Zimmer r an Tag d ist; sonst 0" },
+          { symbol: "b_{r,d}",   description: "1, wenn sowohl männliche als auch weibliche Patientinnen und Patienten in Zimmer r an Tag d sind; sonst 0" },
+        ];
   const bachelorObjectiveLatex = String.raw`\min \quad \sum_{g \in G}\left[(h_g-l_g)+M^{1}\sum_{m \in M}(z_{1mg}+z_{2mg})\right]`;
   const bachelorConstraintsLatex = [
     String.raw`\sum_{g \in G} x_{ig} = 1 \quad (\forall i \in I)`,
@@ -268,8 +331,8 @@ u.d.N. \quad
     String.raw`\sum_{n \in N} s_{gn} \leq |N| - w \quad (\forall g \in G)`,
   ];
   const modelLatex = showBachelorModel ? bachelorModelLatex : portfolioModelLatex;
-  const modelNotation = showBachelorModel ? bachelorNotation : portfolioNotation;
-  const modelVariables = showBachelorModel ? bachelorVariables : portfolioVariables;
+  const modelNotation = showMasterModel ? masterNotation : showBachelorModel ? bachelorNotation : portfolioNotation;
+  const modelVariables = showMasterModel ? masterVariables : showBachelorModel ? bachelorVariables : portfolioVariables;
 
   if (!project) {
     return (
@@ -381,6 +444,14 @@ u.d.N. \quad
                 </div>
               );
             })()}
+            {showMasterModel && graphicComponents["masterarbeit"] && (() => {
+              const Graphic = graphicComponents["masterarbeit"];
+              return (
+                <div className="mt-6 bg-card border border-border rounded-xl overflow-hidden aspect-[2/1]">
+                  <Graphic />
+                </div>
+              );
+            })()}
             <div className="mt-10 space-y-8">
             <div className="bg-card border border-border rounded-xl p-6">
               <h2 className="text-2xl font-semibold text-foreground mb-4">{labels.summary}</h2>
@@ -390,7 +461,22 @@ u.d.N. \quad
             </div>
             <div className="bg-card border border-border rounded-xl p-6">
               <h2 className="text-2xl font-semibold text-foreground mb-4">{labels.model}</h2>
-              {showBachelorModel ? (
+              {showMasterModel ? (
+                <div className="space-y-4 [&_.katex]:text-[0.95rem]">
+                  <p className="text-sm font-medium text-foreground">{labels.objective}</p>
+                  <div className="overflow-x-auto">
+                    <BlockMath math={masterObjectiveLatex} />
+                  </div>
+                  <p className="text-sm font-medium text-foreground pt-2">{labels.constraints}</p>
+                  <div className="space-y-2">
+                    {masterConstraintsLatex.map((constraint, index) => (
+                      <div key={index} className="overflow-x-auto">
+                        <BlockMath math={constraint} />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : showBachelorModel ? (
                 <div className="space-y-4 [&_.katex]:text-[0.95rem]">
                   <p className="text-sm font-medium text-foreground">{labels.objective}</p>
                   <div className="overflow-x-auto">
