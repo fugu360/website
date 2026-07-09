@@ -22,7 +22,7 @@ const educationByLang = {
     },
     {
       degree: "Gymnasium mit Schwerpunkt Wirtschaft & Recht",
-      institution: "Gymnasium",
+      institution: "Gymnasium Biel-Seeland",
       period: "2016 – 2020",
       details: "Schulische Ausbildung mit Fokus auf Wirtschaft und Recht.",
     },
@@ -46,7 +46,7 @@ const educationByLang = {
     },
     {
       degree: "High school with a focus on Economics & Law",
-      institution: "High School",
+      institution: "Gymnasium Biel-Seeland",
       period: "2016 – 2020",
       details: "Secondary education with a focus on economics and law.",
     },
